@@ -29,17 +29,22 @@
         private void InitializeComponent()
         {
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbAllRoutes = new System.Windows.Forms.Label();
+            this.lbAddVertexWithAdge = new System.Windows.Forms.Label();
+            this.lbDjikstra = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lbAddEdge = new System.Windows.Forms.Label();
+            this.tbUkupno = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.rbPeske = new System.Windows.Forms.RadioButton();
+            this.rbVozilo = new System.Windows.Forms.RadioButton();
+            this.rbManuelno = new System.Windows.Forms.RadioButton();
+            this.tbUnos = new System.Windows.Forms.TextBox();
+            this.rbTaksi = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // gmap
@@ -72,43 +77,43 @@
             this.gmap.Load += new System.EventHandler(this.gmap_Load);
             this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
             // 
-            // label1
+            // lbAllRoutes
             // 
-            this.label1.AccessibleName = "allRoutesLbl";
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Show All Routes";
+            this.lbAllRoutes.AccessibleName = "allRoutesLbl";
+            this.lbAllRoutes.AutoSize = true;
+            this.lbAllRoutes.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbAllRoutes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbAllRoutes.Location = new System.Drawing.Point(12, 9);
+            this.lbAllRoutes.Name = "lbAllRoutes";
+            this.lbAllRoutes.Size = new System.Drawing.Size(87, 15);
+            this.lbAllRoutes.TabIndex = 1;
+            this.lbAllRoutes.Text = "Show All Routes";
             // 
-            // label2
+            // lbAddVertexWithAdge
             // 
-            this.label2.AccessibleName = "addVertexLbl";
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Add Vertex With Edge";
+            this.lbAddVertexWithAdge.AccessibleName = "addVertexLbl";
+            this.lbAddVertexWithAdge.AutoSize = true;
+            this.lbAddVertexWithAdge.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbAddVertexWithAdge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbAddVertexWithAdge.Location = new System.Drawing.Point(12, 36);
+            this.lbAddVertexWithAdge.Name = "lbAddVertexWithAdge";
+            this.lbAddVertexWithAdge.Size = new System.Drawing.Size(114, 15);
+            this.lbAddVertexWithAdge.TabIndex = 2;
+            this.lbAddVertexWithAdge.Text = "Add Vertex With Edge";
             // 
-            // label3
+            // lbDjikstra
             // 
-            this.label3.AccessibleName = "dijkstraLbl";
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Script MT Bold", 9.163636F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Dijkstra";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lbDjikstra.AccessibleName = "dijkstraLbl";
+            this.lbDjikstra.AutoSize = true;
+            this.lbDjikstra.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbDjikstra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbDjikstra.Font = new System.Drawing.Font("Script MT Bold", 9.163636F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDjikstra.Location = new System.Drawing.Point(12, 97);
+            this.lbDjikstra.Name = "lbDjikstra";
+            this.lbDjikstra.Size = new System.Drawing.Size(54, 17);
+            this.lbDjikstra.TabIndex = 3;
+            this.lbDjikstra.Text = "Dijkstra";
+            this.lbDjikstra.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
             // 
@@ -146,25 +151,20 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Destination";
             // 
-            // label6
+            // lbAddEdge
             // 
-            this.label6.AccessibleName = "addEdgeLbl";
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(13, 68);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Add Edge";
+            this.lbAddEdge.Location = new System.Drawing.Point(0, 0);
+            this.lbAddEdge.Name = "lbAddEdge";
+            this.lbAddEdge.Size = new System.Drawing.Size(100, 10);
+            this.lbAddEdge.TabIndex = 16;
             // 
-            // textBox3
+            // tbUkupno
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 256);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(264, 20);
-            this.textBox3.TabIndex = 9;
+            this.tbUkupno.Location = new System.Drawing.Point(12, 256);
+            this.tbUkupno.Name = "tbUkupno";
+            this.tbUkupno.ReadOnly = true;
+            this.tbUkupno.Size = new System.Drawing.Size(264, 20);
+            this.tbUkupno.TabIndex = 9;
             // 
             // label7
             // 
@@ -184,27 +184,83 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.78182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(16, 438);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 24);
+            this.label8.Size = new System.Drawing.Size(51, 20);
             this.label8.TabIndex = 11;
             this.label8.Text = "Clear";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+//            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // rbPeske
+            // 
+            this.rbPeske.AutoSize = true;
+            this.rbPeske.Location = new System.Drawing.Point(186, 313);
+            this.rbPeske.Name = "rbPeske";
+            this.rbPeske.Size = new System.Drawing.Size(55, 17);
+            this.rbPeske.TabIndex = 12;
+            this.rbPeske.TabStop = true;
+            this.rbPeske.Text = "Peske";
+            this.rbPeske.UseVisualStyleBackColor = true;
+            // 
+            // rbVozilo
+            // 
+            this.rbVozilo.AutoSize = true;
+            this.rbVozilo.Location = new System.Drawing.Point(186, 337);
+            this.rbVozilo.Name = "rbVozilo";
+            this.rbVozilo.Size = new System.Drawing.Size(55, 17);
+            this.rbVozilo.TabIndex = 13;
+            this.rbVozilo.TabStop = true;
+            this.rbVozilo.Text = "Autom";
+            this.rbVozilo.UseVisualStyleBackColor = true;
+            // 
+            // rbManuelno
+            // 
+            this.rbManuelno.AutoSize = true;
+            this.rbManuelno.Location = new System.Drawing.Point(186, 382);
+            this.rbManuelno.Name = "rbManuelno";
+            this.rbManuelno.Size = new System.Drawing.Size(72, 17);
+            this.rbManuelno.TabIndex = 14;
+            this.rbManuelno.TabStop = true;
+            this.rbManuelno.Text = "Manuelno";
+            this.rbManuelno.UseVisualStyleBackColor = true;
+            // 
+            // tbUnos
+            // 
+            this.tbUnos.Location = new System.Drawing.Point(20, 300);
+            this.tbUnos.Name = "tbUnos";
+            this.tbUnos.Size = new System.Drawing.Size(100, 20);
+            this.tbUnos.TabIndex = 15;
+            // 
+            // rbTaksi
+            // 
+            this.rbTaksi.AutoSize = true;
+            this.rbTaksi.Location = new System.Drawing.Point(186, 359);
+            this.rbTaksi.Name = "rbTaksi";
+            this.rbTaksi.Size = new System.Drawing.Size(51, 17);
+            this.rbTaksi.TabIndex = 17;
+            this.rbTaksi.TabStop = true;
+            this.rbTaksi.Text = "Taksi";
+            this.rbTaksi.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 551);
+            this.Controls.Add(this.rbTaksi);
+            this.Controls.Add(this.tbUnos);
+            this.Controls.Add(this.rbManuelno);
+            this.Controls.Add(this.rbVozilo);
+            this.Controls.Add(this.rbPeske);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tbUkupno);
+            this.Controls.Add(this.lbAddEdge);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbDjikstra);
+            this.Controls.Add(this.lbAddVertexWithAdge);
+            this.Controls.Add(this.lbAllRoutes);
             this.Controls.Add(this.gmap);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -217,17 +273,22 @@
         #endregion
 
         private GMap.NET.WindowsForms.GMapControl gmap;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbAllRoutes;
+        private System.Windows.Forms.Label lbAddVertexWithAdge;
+        private System.Windows.Forms.Label lbDjikstra;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lbAddEdge;
+        private System.Windows.Forms.TextBox tbUkupno;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton rbPeske;
+        private System.Windows.Forms.RadioButton rbVozilo;
+        private System.Windows.Forms.RadioButton rbManuelno;
+        private System.Windows.Forms.TextBox tbUnos;
+        private System.Windows.Forms.RadioButton rbTaksi;
     }
 }
 

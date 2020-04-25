@@ -11,6 +11,7 @@ using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.MapProviders;
+using System.IO;
 
 namespace WindowsFormsApp2
 {
@@ -64,6 +65,9 @@ namespace WindowsFormsApp2
     // I obrnuto
     class Graph
     {
+
+        //Za ispis u fajl tezine grana
+        //private StreamWriter sw = new StreamWriter("graneVremenski.txt");
         //Mapiramo MARKERE sa REDNIM BROJEVIMA
         private Dictionary<int, GMapMarker> intToMarker = new Dictionary<int, GMapMarker>();
         private Dictionary<PointLatLng, int> pointToInt = new Dictionary<PointLatLng, int>();
@@ -92,7 +96,24 @@ namespace WindowsFormsApp2
             int index1 = int.Parse(marker1.Tag.ToString());
             int index2 = int.Parse(marker2.Tag.ToString());
             adjList[index1].Add(new Tuple<int, double>(index2, weight));
-            adjList[index2].Add(new Tuple<int, double>(index1, weight));
+           // Jer nisu sve neusmerene grane! adjList[index2].Add(new Tuple<int, double>(index1, weight));
+            //Dodajemo tezine grana u fajl dvosmerne za pesake, a jednosmerne za vozila!
+           
+               // sw.WriteLine(index1.ToString() + "," + index2.ToString() + "," + weight.ToString());
+            // sw.WriteLine(index2.ToString() + "," + index1.ToString() + "," + weight.ToString());
+           //  sw.Flush();
+
+        }
+
+        public void AddEdge(int index1, int index2, double weight = 0) //Funkcija za dodavanje grane izmednju postojecih cvorova
+        {
+            adjList[index1].Add(new Tuple<int, double>(index2, weight));
+            //Jer nisu sve neusmerene grane! adjList[index2].Add(new Tuple<int, double>(index1, weight));
+            //Dodajemo tezine grana u fajl dvosmerne za pesake, a jednosmerne za vozila!
+            //sw.WriteLine(index1.ToString() + "," + index2.ToString() + "," + weight.ToString());
+            // sw.WriteLine(index2.ToString() + "," + index1.ToString() + "," + weight.ToString());
+            // sw.Flush();
+
         }
 
 
@@ -117,21 +138,40 @@ namespace WindowsFormsApp2
             return routes;
         }
 
-        public GMapRoute getDijkstraRoute(PointLatLng pt1, PointLatLng pt2)
+        public double tezinaGrane(int a,int b)
+        {
+            if (a < 0)
+                return -1;
+            
+            foreach (var i in adjList[a])
+            {
+                if (i.Item1 == b)
+                    return i.Item2;
+            }
+            return -1; // u slucaju greske
+        }
+
+        //Ovde sam modifikovao da dobijem i duzinu, zato imam tuple povratnu vrendost
+        public Tuple<GMapRoute,double> getDijkstraRoute(PointLatLng pt1, PointLatLng pt2)
         {
             int u = pointToInt[pt1];
             int v = pointToInt[pt2];
+            double duzina = 0;
             GMapRoute route = new GMapRoute("Dijsktra");
             int[] parent = Dijkstra(u, v);
             while(v != u)
             {
                 route.Points.Add(intToMarker[v].Position);
+                duzina += tezinaGrane(parent[v],v);// obrnuto jer Dijkstra vraca cvorove unazad!
                 v = parent[v];
             }
             route.Points.Add(intToMarker[u].Position);
             route.Stroke = new Pen(Color.Green, 5);
-            return route;
+            Tuple<GMapRoute, double> finalno = new Tuple<GMapRoute, double>(route, duzina);
+            return finalno;
         }
+
+       
 
         public int[]  Dijkstra(int pocetniCvor, int zavrsniCvor)
         {
