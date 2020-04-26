@@ -83,7 +83,7 @@ namespace WindowsFormsApp2
         {
             intToMarker.Add(size, new GMarkerGoogle(position, GMarkerGoogleType.blue)); //dodajemo novi cvor u mapiranje
             pointToInt.Add(position, size);
-            intToMarker[size].Tag = size.ToString();            //dodajemo tag (redni broj) objektu marker
+            intToMarker[size].Tag = size.ToString();  //dodajemo tag (redni broj) objektu marker
             adjList.Add(new List<Tuple<int, double>>());        
             size++;
 
@@ -92,7 +92,7 @@ namespace WindowsFormsApp2
 
         public void AddEdge(GMapMarker marker1, GMapMarker marker2, double weight=0) //Funkcija za dodavanje grane izmednju postojecih cvorova
         {
-            weight = Form1.distance(marker1, marker2.Position.Lat, marker2.Position.Lng);
+            weight = form1.distance(marker1, marker2.Position.Lat, marker2.Position.Lng);
             int index1 = int.Parse(marker1.Tag.ToString());
             int index2 = int.Parse(marker2.Tag.ToString());
             adjList[index1].Add(new Tuple<int, double>(index2, weight));
@@ -152,22 +152,24 @@ namespace WindowsFormsApp2
         }
 
         //Ovde sam modifikovao da dobijem i duzinu, zato imam tuple povratnu vrendost
-        public Tuple<GMapRoute,double> getDijkstraRoute(PointLatLng pt1, PointLatLng pt2)
+
+            //LUKA: umesto da vraca tuple <GmapRoute,double> vracace <List<GmapMarker>,double>listu markera sadrzanih u optimalnom putu
+            //..treba mi zbog ispisivanja imena znamenitosti iznad markera(ToolTextTip).
+        public Tuple<List<GMapMarker>,double> getDijkstraRoute(PointLatLng pt1, PointLatLng pt2)
         {
             int u = pointToInt[pt1];
             int v = pointToInt[pt2];
             double duzina = 0;
-            GMapRoute route = new GMapRoute("Dijsktra");
+            List<GMapMarker> listOfDijsktraMarkers = new List<GMapMarker>();
             int[] parent = Dijkstra(u, v);
             while(v != u)
             {
-                route.Points.Add(intToMarker[v].Position);
+                listOfDijsktraMarkers.Add(intToMarker[v]);
                 duzina += tezinaGrane(parent[v],v);// obrnuto jer Dijkstra vraca cvorove unazad!
                 v = parent[v];
             }
-            route.Points.Add(intToMarker[u].Position);
-            route.Stroke = new Pen(Color.Green, 5);
-            Tuple<GMapRoute, double> finalno = new Tuple<GMapRoute, double>(route, duzina);
+            listOfDijsktraMarkers.Add(intToMarker[u]);
+            Tuple<List<GMapMarker>, double> finalno = new Tuple<List<GMapMarker>, double>(listOfDijsktraMarkers, duzina);
             return finalno;
         }
 
