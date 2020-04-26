@@ -312,7 +312,6 @@ namespace WindowsFormsApp2
                         cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
                         cvorMarker = graphTaxi.getMarkerFromInt(rbr);
                         cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-
                     }
                     var tmpPesaci = graphPesaci.getDijkstraRoute(pt1, pt2);
                     listaMarkera = tmpPesaci.Item1;
