@@ -18,14 +18,14 @@ using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp2
 {
-    
+
     public partial class form1 : Form
     {
         private Graph graph = new Graph();
         private Graph graphPesaci = new Graph();
         private Graph graphVozila = new Graph();
         private Graph graphTaxi = new Graph();
-        
+
         private GMapOverlay overlay = new GMapOverlay();    //sve cemo dodavati na jedan overlay                         
         private bool click_count = false;
         //LUKA:obelezeni markeri koji predstavlja pocetni i krajnji cvor za dijsktru
@@ -33,6 +33,21 @@ namespace WindowsFormsApp2
         private GMapMarker second;
         private GMapRoute currentDijkstra;
         private int tarifa = 0;
+
+        //LUKA NOVO: funkcija koja brise sva imena znamenitosti u grafu
+        private void izbrisiZnamenitosti() {
+            for (int rbr = 0; rbr < graph.getSize(); rbr++)
+            {
+                GMapMarker cvorMarker = graph.getMarkerFromInt(rbr);
+                cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
+                cvorMarker = graphVozila.getMarkerFromInt(rbr);
+                cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
+                cvorMarker = graphPesaci.getMarkerFromInt(rbr);
+                cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
+                cvorMarker = graphTaxi.getMarkerFromInt(rbr);
+                cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
+            }
+        }
 
         //LUKA:funkcija koja na osnovu koordindata vraca string koji predstavlja ime znamenitosti (iz onog mog fajla)
         //..radi tako sto za dati point prolazi kroz ceo fajl i poroverava jednakost sa koordinatama iz fajla , ako se poklope vraca string
@@ -57,14 +72,15 @@ namespace WindowsFormsApp2
                 double x = Convert.ToDouble(koordinate[0]);
                 double y = Convert.ToDouble(koordinate[1]);
                 string[] splitPoRazmaku = splitPoTackaZarez[1].Split(',');
-                if (point.Lat == x && point.Lng==y && splitPoRazmaku[1].Length!=2) {
+                if (point.Lat == x && point.Lng == y && splitPoRazmaku[1].Length != 2)
+                {
                     return splitPoRazmaku[1];
                 }
             }
             return "";
         }
         //Racunanje razdaljine izmedju dve tacke (tip argumenata menjamo po potrebi)
-        public static double distance(GMapMarker marker1, double x1, double y1)     
+        public static double distance(GMapMarker marker1, double x1, double y1)
         {
             List<PointLatLng> pts = new List<PointLatLng>();
             pts.Add(marker1.Position);
@@ -76,11 +92,15 @@ namespace WindowsFormsApp2
         public form1()
         {
             InitializeComponent();
+            hideHelpbt.Visible = false;
+            hideLabel.Visible = false;
+            uputstvo1.Visible = false;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void gmap_Load(object sender, EventArgs e)
@@ -117,7 +137,7 @@ namespace WindowsFormsApp2
             gmap.Overlays.Add(polygons);
 
             GMapOverlay markers = new GMapOverlay("markers");
-            
+
             string textFilePath = @"..\..\..\..\menhetn_cvorovi.txt";
             System.IO.FileStream filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
@@ -136,26 +156,26 @@ namespace WindowsFormsApp2
                 string[] koordinate = splitPoTackaZarez[0].Split(',');
                 double x = Convert.ToDouble(koordinate[0]);
                 double y = Convert.ToDouble(koordinate[1]);
-                PointLatLng point= new PointLatLng(x, y);
+                PointLatLng point = new PointLatLng(x, y);
                 GMapMarker marker = new GMarkerGoogle(
                     point,
                     GMarkerGoogleType.blue_pushpin);
                 string[] splitPoRazmaku = splitPoTackaZarez[1].Split(',');
-               // mapa_Cvorova.Add(Convert.ToInt32(splitPoRazmaku[0]), new Tuple<double, double, string>(x, y, splitPoRazmaku[1]));
+                // mapa_Cvorova.Add(Convert.ToInt32(splitPoRazmaku[0]), new Tuple<double, double, string>(x, y, splitPoRazmaku[1]));
                 markers.Markers.Add(marker);
-            
+
                 graph.Add(point);
                 graphPesaci.Add(point);
                 graphVozila.Add(point);
                 graphTaxi.Add(point);
                 gmap.Overlays[0].Markers.Add(graph.getMarkerFromInt(graph.getSize() - 1));
-                
+
             }
-          // gmap.Overlays.Add(markers);
+            // gmap.Overlays.Add(markers);
             filestream.Close();
 
-            
-            
+
+
             //Ucitavam grane iz genersianih fajlova
             textFilePath = @"..\..\..\..\granePesaci.txt";
             filestream = new System.IO.FileStream(textFilePath,
@@ -171,19 +191,20 @@ namespace WindowsFormsApp2
                 int drugiCvor = Convert.ToInt32(grane[1]);
                 double tezina = Convert.ToDouble(grane[2]);
                 graphPesaci.AddEdge(prviCvor, drugiCvor, tezina);// Ovako ce se dvosmerno uneti jer su u fajlu unesena oba smera grane
-               
+
             }
 
             filestream.Close();
 
             // Moramo da vidimo da li se voznja obavlja u spicu ili ne. Ovde bi valjalo neki try-catch staviti definitivno.
             DateTime trenutnoLokalno = DateTime.UtcNow;
-            TimeZoneInfo njujorkZona= TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            DateTime menhetnVreme=TimeZoneInfo.ConvertTimeFromUtc(trenutnoLokalno,njujorkZona);
+            TimeZoneInfo njujorkZona = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            DateTime menhetnVreme = TimeZoneInfo.ConvertTimeFromUtc(trenutnoLokalno, njujorkZona);
             tarifa = 0;// ako nije ni spic ni posle 8 uvece za naplatu taksija
-            if (menhetnVreme.Hour >= 16 && menhetnVreme.Hour <= 20)
+            int satnica = menhetnVreme.Hour;
+            if (satnica >= 16 && satnica <= 19)
                 tarifa = 1;
-            if (menhetnVreme.Hour >= 20 || menhetnVreme.Hour <= 6)
+            if (satnica >= 20 || satnica <= 5)
                 tarifa = 2;
 
             //Paralelno cemo za taksi i vozila citanje obavljati
@@ -199,14 +220,14 @@ namespace WindowsFormsApp2
 
             var fileRastojanja = new System.IO.StreamReader(filestreamRastojanja, System.Text.Encoding.UTF8, true, 128);
 
-            textFilePath = @"..\..\..\..\graneVremena.txt";
+            textFilePath = @"..\..\..\..\graneVremena24.txt";
             filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
                                                       System.IO.FileShare.ReadWrite);
             file = new System.IO.StreamReader(filestream, System.Text.Encoding.UTF8, true, 300);
 
-            while ((linijaTeksta = file.ReadLine()) != null && (linijaRastojanja=fileRastojanja.ReadLine())!=null)
+            while ((linijaTeksta = file.ReadLine()) != null && (linijaRastojanja = fileRastojanja.ReadLine()) != null)
             {
                 //Ovo su vremena splitovanje
                 string[] grane = linijaTeksta.Split(',');
@@ -220,32 +241,28 @@ namespace WindowsFormsApp2
                 int drugiRastojanja = Convert.ToInt32(rastojanja[1]);
                 double razdaljina = Convert.ToDouble(rastojanja[2]);
 
-                double tezina=0;//Odnosi se na vreme samo!
-                if (tarifa == 1)
-                    tezina = Convert.ToDouble(vremena[1]);
-                else
-                    tezina = Convert.ToDouble(vremena[0]);
-             
-                tezina =tezina/ 60.0;
-                graphVozila.AddEdge(prviCvor, drugiCvor, tezina);
+                double vreme = Convert.ToDouble(vremena[satnica]);
 
-                double tezinaRastojanja = 0.5 * 5 / 1.61 * razdaljina + tezina * 0.5;
+                vreme = vreme / 60.0;
+                graphVozila.AddEdge(prviCvor, drugiCvor, vreme);
+
+                double tezinaRastojanja = 0.5 * 5 / 1.61 * razdaljina + vreme * 0.5;
                 graphTaxi.AddEdge(prviRastojanja, drugiRastojanja, tezinaRastojanja);
             }
 
             filestream.Close();
             filestreamRastojanja.Close();
 
-            
+
 
         }
 
         public void drawAllRoutes()
         {
-            
+
 
             List<GMapRoute> routes;
-            for(int i=0; i<graph.getSize(); i++)
+            for (int i = 0; i < graph.getSize(); i++)
             {
                 routes = graph.getRoute(i);
                 overlay.Markers.Add(graph.getMarkerFromInt(i));
@@ -255,11 +272,11 @@ namespace WindowsFormsApp2
                     gmap.Overlays[0].Routes.Add(route);
                 }
             }
-            
+
         }
 
         //ovde sam dodao parametar i graf sam po sebi kako bih mogao da manipulisem s grafovima manuelno/pesaci/vozila/taksi
-        public void drawDijkstraRoute(PointLatLng pt1, PointLatLng pt2,int i)
+        public void drawDijkstraRoute(PointLatLng pt1, PointLatLng pt2, int i)
         {
 
             double ukupno = 0;
@@ -270,21 +287,11 @@ namespace WindowsFormsApp2
 
                     //LUKA : za sve grafove koje su prethodno napravljeni brisem tooltiptexts za svaki cvor
                     //mozda moze da se dobije na efikasnosti  ako se pamti koji je transport izabran pre ovog
-                    for (int rbr = 0; rbr < graph.getSize(); rbr++)
-                    {
-                        GMapMarker cvorMarker = graph.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphVozila.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphPesaci.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphTaxi.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                    }
+                    izbrisiZnamenitosti();
                     //LUKA: ovo je sada <List<GMapMarker>,double>
                     var tmp = graph.getDijkstraRoute(pt1, pt2);
                     List<GMapMarker> listaMarkera = tmp.Item1;
-                    
+
                     //LUKA:prolazim kroz svaki marker, uzimam mu ime znamenitosti ako je ima, i ako je ima lepim markeru tooltiptext sa imenom znamenitosti
                     foreach (GMapMarker el in listaMarkera)
                     {
@@ -302,17 +309,7 @@ namespace WindowsFormsApp2
                     ukupno = tmp.Item2;
                     break;
                 case 1:
-                    for (int rbr = 0; rbr < graphPesaci.getSize(); rbr++)
-                    {
-                        GMapMarker cvorMarker = graph.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphVozila.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphPesaci.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphTaxi.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                    }
+                    izbrisiZnamenitosti();
                     var tmpPesaci = graphPesaci.getDijkstraRoute(pt1, pt2);
                     listaMarkera = tmpPesaci.Item1;
                     foreach (GMapMarker el in listaMarkera)
@@ -330,20 +327,10 @@ namespace WindowsFormsApp2
                     ukupno = tmpPesaci.Item2;
                     break;
                 case 2:
-                    for (int rbr = 0; rbr < graphVozila.getSize(); rbr++)
-                    {
-                        GMapMarker cvorMarker = graph.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphVozila.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphPesaci.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphTaxi.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                    }
-                    var tmpVozila= graphVozila.getDijkstraRoute(pt1, pt2);
+                    izbrisiZnamenitosti();
+                    var tmpVozila = graphVozila.getDijkstraRoute(pt1, pt2);
                     listaMarkera = tmpVozila.Item1;
-                    
+
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
@@ -360,17 +347,7 @@ namespace WindowsFormsApp2
                     ukupno = tmpVozila.Item2;
                     break;
                 case 3:
-                    for (int rbr = 0; rbr < graphTaxi.getSize(); rbr++)
-                    {
-                        GMapMarker cvorMarker = graph.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphVozila.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphPesaci.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                        cvorMarker = graphTaxi.getMarkerFromInt(rbr);
-                        cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
-                    }
+                    izbrisiZnamenitosti();
                     var tmpTaxi = graphTaxi.getDijkstraRoute(pt1, pt2);
                     listaMarkera = tmpTaxi.Item1;
                     foreach (GMapMarker el in listaMarkera)
@@ -396,16 +373,16 @@ namespace WindowsFormsApp2
             {
                 case 0:
                     //LUKA : zaoukruzivanje na 2/3 decimale
-                    tbUkupno.Text = Math.Round(ukupno,3) + "km";
+                    tbUkupno.Text = Math.Round(ukupno, 3) + "km";
                     break;
                 case 1:
                     //brzina coveka kad pesaci je u proseku  4.5 km/h sto je 0.075 km/minut
                     double brzina = 0.075;
                     double vreme = ukupno / brzina;
-                    tbUkupno.Text = Math.Round(vreme,2).ToString() + "  minuta";
+                    tbUkupno.Text = Math.Round(vreme, 2).ToString() + "  minuta";
                     break;
                 case 2:
-                    tbUkupno.Text = Math.Round(ukupno,2).ToString() + " minuta";
+                    tbUkupno.Text = Math.Round(ukupno, 2).ToString() + " minuta";
                     break;
                 case 3:
                     ukupno += 2.8;
@@ -413,14 +390,14 @@ namespace WindowsFormsApp2
                         ukupno += 1;
                     if (tarifa == 2)
                         ukupno += 0.5;
-                    tbUkupno.Text = Math.Round(ukupno,2).ToString() + " $";
+                    tbUkupno.Text = Math.Round(ukupno, 2).ToString() + " $";
                     break;
             }
-          
+
         }
 
-        
-        private void gmap_MouseDoubleClick(object sender, MouseEventArgs e )
+
+        private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             PointLatLng point = gmap.FromLocalToLatLng(e.X, e.Y);
             graph.Add(point);
@@ -429,7 +406,7 @@ namespace WindowsFormsApp2
 
         private void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-           
+
             //LUKA:ako nisam kliknuo na pocetni pre ovoga, onda dodajem novi marker preko njega i bojim ga u crveno
             //..ne znam kako da promenim boju markeru
             if (!click_count)
@@ -443,6 +420,7 @@ namespace WindowsFormsApp2
             //LUKA : ako sam pre ovoga vec obojio jedan marker, onda obojim i ovog na kojeg sam kliknuo
             if (click_count)
             {
+                izbrisiZnamenitosti();
                 second = item;
                 GMapMarker obelezeni = new GMarkerGoogle(item.Position, GMarkerGoogleType.red);
                 gmap.Overlays[0].Markers.Add(obelezeni);
@@ -450,17 +428,17 @@ namespace WindowsFormsApp2
                 dijkstraBt.Visible = true;
                 //Da bi se obrisao prethodni Djikstra
                 gmap.Overlays[0].Routes.Remove(currentDijkstra);
-                
+
             }
-                         
-        
+
+
         }
 
         private void dijkstraBt_Click(object sender, EventArgs e)
         {
 
-            if (rbManuelno.Checked == true)
-                drawDijkstraRoute(first.Position, second.Position, 0);
+            //       if (rbManuelno.Checked == true)
+            //           drawDijkstraRoute(first.Position, second.Position, 0);
 
             if (rbPeske.Checked == true)
                 drawDijkstraRoute(first.Position, second.Position, 1);
@@ -480,6 +458,20 @@ namespace WindowsFormsApp2
             dijkstraBt.Visible = false;
             return;
         }
+        //LUKA NOVO :dugme za prikaz helpa
+        private void button2_Click(object sender, EventArgs e)
+        {
+            uputstvo1.Visible = true;
+            hideLabel.Visible = true;
+            hideHelpbt.Visible = true;
+        }
 
+        //LUKA NOVO:dugme za brisanje help-a
+        private void button1_Click(object sender, EventArgs e)
+        {
+            uputstvo1.Visible = false;
+            hideLabel.Visible = false;
+            hideHelpbt.Visible = false;
+        }
     }
 }
