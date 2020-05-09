@@ -35,13 +35,14 @@
             this.tbUkupno = new System.Windows.Forms.TextBox();
             this.dijkstraBt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.hideLabel = new System.Windows.Forms.Panel();
             this.hideHelpbt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.hideLabel = new System.Windows.Forms.Panel();
             this.uputstvo1 = new WindowsFormsApp2.uputstvo();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -74,8 +75,8 @@
             this.gmap.Size = new System.Drawing.Size(922, 659);
             this.gmap.TabIndex = 0;
             this.gmap.Zoom = 15D;
-            this.gmap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gmap_OnMarkerClick);
             this.gmap.Load += new System.EventHandler(this.gmap_Load);
+            this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
             this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
             // 
             // rbPeske
@@ -85,7 +86,7 @@
             this.rbPeske.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbPeske.Location = new System.Drawing.Point(64, 257);
             this.rbPeske.Name = "rbPeske";
-            this.rbPeske.Size = new System.Drawing.Size(62, 21);
+            this.rbPeske.Size = new System.Drawing.Size(70, 24);
             this.rbPeske.TabIndex = 12;
             this.rbPeske.TabStop = true;
             this.rbPeske.Text = "Peske";
@@ -98,7 +99,7 @@
             this.rbVozilo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbVozilo.Location = new System.Drawing.Point(64, 280);
             this.rbVozilo.Name = "rbVozilo";
-            this.rbVozilo.Size = new System.Drawing.Size(70, 21);
+            this.rbVozilo.Size = new System.Drawing.Size(75, 24);
             this.rbVozilo.TabIndex = 13;
             this.rbVozilo.TabStop = true;
             this.rbVozilo.Text = "Autom";
@@ -111,7 +112,7 @@
             this.rbTaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbTaksi.Location = new System.Drawing.Point(64, 305);
             this.rbTaksi.Name = "rbTaksi";
-            this.rbTaksi.Size = new System.Drawing.Size(55, 21);
+            this.rbTaksi.Size = new System.Drawing.Size(59, 24);
             this.rbTaksi.TabIndex = 17;
             this.rbTaksi.TabStop = true;
             this.rbTaksi.Text = "Taksi";
@@ -121,6 +122,7 @@
             // 
             this.tbUkupno.Location = new System.Drawing.Point(3, 217);
             this.tbUkupno.Name = "tbUkupno";
+            this.tbUkupno.ReadOnly = true;
             this.tbUkupno.Size = new System.Drawing.Size(190, 20);
             this.tbUkupno.TabIndex = 15;
             // 
@@ -155,15 +157,23 @@
             this.panel1.Size = new System.Drawing.Size(304, 659);
             this.panel1.TabIndex = 19;
             // 
+            // hideLabel
+            // 
+            this.hideLabel.BackColor = System.Drawing.Color.Red;
+            this.hideLabel.Location = new System.Drawing.Point(3, 180);
+            this.hideLabel.Name = "hideLabel";
+            this.hideLabel.Size = new System.Drawing.Size(10, 25);
+            this.hideLabel.TabIndex = 25;
+            // 
             // hideHelpbt
             // 
             this.hideHelpbt.FlatAppearance.BorderSize = 0;
             this.hideHelpbt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideHelpbt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hideHelpbt.ForeColor = System.Drawing.Color.White;
-            this.hideHelpbt.Location = new System.Drawing.Point(5, 277);
+            this.hideHelpbt.Location = new System.Drawing.Point(5, 175);
             this.hideHelpbt.Name = "hideHelpbt";
-            this.hideHelpbt.Size = new System.Drawing.Size(291, 25);
+            this.hideHelpbt.Size = new System.Drawing.Size(291, 30);
             this.hideHelpbt.TabIndex = 24;
             this.hideHelpbt.Text = "Hide help";
             this.hideHelpbt.UseVisualStyleBackColor = true;
@@ -180,6 +190,14 @@
             this.label1.Text = "Manhattan Project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Red;
+            this.panel3.Location = new System.Drawing.Point(3, 71);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 98);
+            this.panel3.TabIndex = 20;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -188,7 +206,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(9, 124);
+            this.button2.Location = new System.Drawing.Point(9, 71);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(290, 98);
             this.button2.TabIndex = 22;
@@ -196,17 +214,10 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Red;
-            this.panel3.Location = new System.Drawing.Point(-1, 124);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 98);
-            this.panel3.TabIndex = 20;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Controls.Add(this.Clear);
             this.panel4.Controls.Add(this.dijkstraBt);
             this.panel4.Controls.Add(this.tbUkupno);
             this.panel4.Controls.Add(this.rbPeske);
@@ -217,6 +228,17 @@
             this.panel4.Size = new System.Drawing.Size(193, 659);
             this.panel4.TabIndex = 21;
             // 
+            // Clear
+            // 
+            this.Clear.AccessibleName = "Clear";
+            this.Clear.Location = new System.Drawing.Point(59, 468);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.TabIndex = 19;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -225,21 +247,13 @@
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
             // 
-            // hideLabel
-            // 
-            this.hideLabel.BackColor = System.Drawing.Color.Red;
-            this.hideLabel.Location = new System.Drawing.Point(-1, 277);
-            this.hideLabel.Name = "hideLabel";
-            this.hideLabel.Size = new System.Drawing.Size(10, 25);
-            this.hideLabel.TabIndex = 25;
-            // 
             // uputstvo1
             // 
             this.uputstvo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uputstvo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uputstvo1.Location = new System.Drawing.Point(3, 308);
+            this.uputstvo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.163636F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uputstvo1.Location = new System.Drawing.Point(-3, 211);
             this.uputstvo1.Name = "uputstvo1";
-            this.uputstvo1.Size = new System.Drawing.Size(299, 346);
+            this.uputstvo1.Size = new System.Drawing.Size(299, 369);
             this.uputstvo1.TabIndex = 25;
             // 
             // form1
@@ -253,7 +267,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "form1";
-            this.Text = "Form1";
+            this.Text = "Manhattan Project";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -280,6 +294,7 @@
         private System.Windows.Forms.Button hideHelpbt;
         private System.Windows.Forms.Panel hideLabel;
         private uputstvo uputstvo1;
+        private System.Windows.Forms.Button Clear;
     }
 }
 

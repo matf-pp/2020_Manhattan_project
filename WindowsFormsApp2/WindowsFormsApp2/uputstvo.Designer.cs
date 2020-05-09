@@ -83,7 +83,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(16, 179);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(211, 68);
+            this.label5.Size = new System.Drawing.Size(228, 80);
             this.label5.TabIndex = 4;
             this.label5.Text = "-Na mapi uociti optimalan put,\r\nsa ispisom znamenitosti \r\nna koje nailazite kreta" +
     "njem \r\ntim putem";
@@ -95,14 +95,15 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(16, 259);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(356, 76);
+            this.label6.Size = new System.Drawing.Size(356, 123);
             this.label6.TabIndex = 5;
             this.label6.Text = "-U text box-u ce se pojaviti optimalno \r\nvreme (u slucaju odabira opcije \"peske\" " +
-    "\r\nili \"autom\") ili cena voznje \r\n(u slucaju odabira opcije \"taksi\") \r\n";
+    "\r\nili \"autom\") ili cena voznje \r\n(u slucaju odabira opcije \"taksi\") \r\n-Za trazen" +
+    "je novog puta, kliknuti Clear";
             // 
             // uputstvo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Controls.Add(this.label6);
@@ -113,7 +114,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "uputstvo";
-            this.Size = new System.Drawing.Size(299, 347);
+            this.Size = new System.Drawing.Size(317, 410);
             this.ResumeLayout(false);
             this.PerformLayout();
 

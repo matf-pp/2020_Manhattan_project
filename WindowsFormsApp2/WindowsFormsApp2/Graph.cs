@@ -92,7 +92,6 @@ namespace WindowsFormsApp2
 
         public void AddEdge(GMapMarker marker1, GMapMarker marker2, double weight=0) //Funkcija za dodavanje grane izmednju postojecih cvorova
         {
-            weight = form1.distance(marker1, marker2.Position.Lat, marker2.Position.Lng);
             int index1 = int.Parse(marker1.Tag.ToString());
             int index2 = int.Parse(marker2.Tag.ToString());
             adjList[index1].Add(new Tuple<int, double>(index2, weight));
@@ -228,6 +227,11 @@ namespace WindowsFormsApp2
         public GMapMarker getMarkerFromInt(int u)
         {
             return intToMarker[u];
+        }
+
+        public int getIntFromPosition(PointLatLng pt)
+        {
+            return pointToInt[pt];
         }
 
         public int getSize()

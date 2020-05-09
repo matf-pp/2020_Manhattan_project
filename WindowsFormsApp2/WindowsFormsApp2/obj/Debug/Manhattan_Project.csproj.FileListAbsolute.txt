@@ -1,0 +1,14 @@
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\GMap.NET.Core.dll
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Manhattan_Project.csprojAssemblyReference.cache
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.form1.resources
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.uputstvo.resources
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Manhattan_Project.csproj.GenerateResource.cache
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Manhattan_Project.csproj.CoreCompileInputs.cache
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Manhattan_Project.csproj.CopyComplete
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\vanda\Desktop\C#\2020_Manhattan_project-master\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb

@@ -26,14 +26,83 @@ namespace WindowsFormsApp2
         private Graph graphVozila = new Graph();
         private Graph graphTaxi = new Graph();
 
+        //VLADAN NOVO
+        private List<PointLatLng> positions = new List<PointLatLng>();
+
+        //Vladan novo:
+        GMapPolygon polygon;
+
         private GMapOverlay overlay = new GMapOverlay();    //sve cemo dodavati na jedan overlay                         
         private bool click_count = false;
         //LUKA:obelezeni markeri koji predstavlja pocetni i krajnji cvor za dijsktru
         private GMapMarker first;
         private GMapMarker second;
+
+        //VLADAN NOVO: Indexi markera najblizih pocetnoj lokaciji
+        private int firstNearest;
+        private int secondNearest;
+
         private GMapRoute currentDijkstra;
         private int tarifa = 0;
 
+        //VLADAN NOVO: Cuvamo znamenitosti u listi
+        private List<string> znamenitosti = new List<string>();
+
+        //Racunanje razdaljine izmedju dve tacke (tip argumenata menjamo po potrebi)
+        public static double distance(GMapMarker marker1, GMapMarker marker2)
+        {
+            List<PointLatLng> pts = new List<PointLatLng>();
+            pts.Add(marker1.Position);
+            pts.Add(marker2.Position);
+            GMapRoute route = new GMapRoute(pts, "");
+            return route.Distance;
+        }
+
+        //VLADAN NOVO: Vraca najblizi marker od kliknute lokacije, ogranicen na poligon
+        private int getNearestPoint(GMapMarker marker)
+        {
+            if(!inPolygon(marker))
+            {
+                //MessageBox.Show("Marker nije u pokrivenoj oblasti.");
+                //return -1;
+            }
+            int nearest = 0;
+            double nearestDist = distance(marker, graph.getMarkerFromInt(0));
+            for(int i=1; i<graph.getSize(); i++)
+            {
+                if (distance(marker, graph.getMarkerFromInt(i)) < nearestDist)
+                {
+                    nearestDist = distance(marker, graph.getMarkerFromInt(i));
+                    nearest = i;
+                }
+            }
+            return nearest;
+        }
+
+        //VLADAN NOVO: projekcija na xy ravan (sferne koordinate u obicne)
+       
+        private Tuple<double, double> xyProjection(PointLatLng pt)
+        {
+            return new Tuple<double, double>(Math.Cos(pt.Lat) * Math.Cos(pt.Lng), Math.Sin(pt.Lat) * Math.Cos(pt.Lng));
+        }
+        private bool inPolygon(GMapMarker marker) {
+            double x1, y1, x2, y2, x3, y3, x4, y4, x, y;
+            x1 = xyProjection(polygon.Points[0]).Item1;
+            x2 = xyProjection(polygon.Points[1]).Item1;
+            x3 = xyProjection(polygon.Points[2]).Item1;
+            x4 = xyProjection(polygon.Points[3]).Item1;
+            y1 = xyProjection(polygon.Points[0]).Item2;
+            y2 = xyProjection(polygon.Points[1]).Item2;
+            y3 = xyProjection(polygon.Points[2]).Item2;
+            y4 = xyProjection(polygon.Points[3]).Item2;
+
+            x = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item1;
+            y = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item2;
+
+            return (y > (y4 - y1) / (x4 - x1) * (x - x1) + y1 && y > (y3 - y4) / (x3 - x4) * (x - x4) + y4 && y < (y3 - y2) / (x3 - x2) * (x - x2) + y2 && y < (y2 - y1) / (x2 - x1) * (x - x1) + y1) ;
+        }
+
+        
         //LUKA NOVO: funkcija koja brise sva imena znamenitosti u grafu
         private void izbrisiZnamenitosti() {
             for (int rbr = 0; rbr < graph.getSize(); rbr++)
@@ -79,14 +148,11 @@ namespace WindowsFormsApp2
             }
             return "";
         }
-        //Racunanje razdaljine izmedju dve tacke (tip argumenata menjamo po potrebi)
-        public static double distance(GMapMarker marker1, double x1, double y1)
+
+        //VLADAN NOVO
+        private string uzimanjeZnamenitostiNaOsnovuKoordinata(int i)
         {
-            List<PointLatLng> pts = new List<PointLatLng>();
-            pts.Add(marker1.Position);
-            pts.Add(new PointLatLng(x1, y1));
-            GMapRoute route = new GMapRoute(pts, "");
-            return route.Distance;
+            return znamenitosti[i];
         }
 
         public form1()
@@ -105,11 +171,7 @@ namespace WindowsFormsApp2
 
         private void gmap_Load(object sender, EventArgs e)
         {
-            /*
-            gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
-            gmap.Position = new PointLatLng(40.756132, -73.985926);
-            */
+            
             gmap.Overlays.Add(overlay);
 
             //LUKA: u pocetku vidljivost dugmeta za dijsktru je false
@@ -130,12 +192,14 @@ namespace WindowsFormsApp2
             points.Add(new PointLatLng(40.766829, -73.982916));
             points.Add(new PointLatLng(40.763006, -73.973813));
             points.Add(new PointLatLng(40.753410, -73.980861));
-            GMapPolygon polygon = new GMapPolygon(points, "Jardin des Tuileries");
+
+            //VLADAN NOVO: prebacio sam polygon kao atribut, zbog provere da li tacka pripada poligonu na klik
+            polygon = new GMapPolygon(points, "Jardin des Tuileries");
             polygons.Polygons.Add(polygon);
             polygon.Fill = new SolidBrush(Color.FromArgb(40, Color.Green));
             polygon.Stroke = new Pen(Color.Green, 1);
             gmap.Overlays.Add(polygons);
-
+           
             GMapOverlay markers = new GMapOverlay("markers");
 
             string textFilePath = @"..\..\..\..\menhetn_cvorovi.txt";
@@ -161,14 +225,17 @@ namespace WindowsFormsApp2
                     point,
                     GMarkerGoogleType.blue_pushpin);
                 string[] splitPoRazmaku = splitPoTackaZarez[1].Split(',');
+                //VLADAN NOVO
+                znamenitosti.Add(splitPoRazmaku[1]);
                 // mapa_Cvorova.Add(Convert.ToInt32(splitPoRazmaku[0]), new Tuple<double, double, string>(x, y, splitPoRazmaku[1]));
                 markers.Markers.Add(marker);
 
+                positions.Add(point);
                 graph.Add(point);
                 graphPesaci.Add(point);
                 graphVozila.Add(point);
                 graphTaxi.Add(point);
-                gmap.Overlays[0].Markers.Add(graph.getMarkerFromInt(graph.getSize() - 1));
+                //gmap.Overlays[0].Markers.Add(graph.getMarkerFromInt(graph.getSize() - 1));
 
             }
             // gmap.Overlays.Add(markers);
@@ -256,11 +323,9 @@ namespace WindowsFormsApp2
 
 
         }
-
+        //Vladan: Koristan metod za pregled svih grana u grafu
         public void drawAllRoutes()
         {
-
-
             List<GMapRoute> routes;
             for (int i = 0; i < graph.getSize(); i++)
             {
@@ -281,6 +346,7 @@ namespace WindowsFormsApp2
 
             double ukupno = 0;
             currentDijkstra = new GMapRoute("Dijkstra");
+           
             switch (i)
             {
                 case 0:
@@ -302,9 +368,9 @@ namespace WindowsFormsApp2
                             el.ToolTip.Fill = Brushes.Black;
                             el.ToolTip.Foreground = Brushes.White;
                             el.ToolTipMode = MarkerTooltipMode.Always;
+                            gmap.Overlays[0].Markers.Add(el);
                         }
                         //LUKA: dodajem marker overlay
-                        gmap.Overlays[0].Markers.Add(el);
                     }
                     ukupno = tmp.Item2;
                     break;
@@ -315,14 +381,15 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        el.ToolTipText = uzimanjeZnamenitostiNaOsnovuKoordinata(el.Position);
-                        if (!(el.ToolTipText).Equals(""))
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        if (znamenitost != "\"\"")
                         {
+                            el.ToolTipText = znamenitost;
                             el.ToolTip.Fill = Brushes.Black;
                             el.ToolTip.Foreground = Brushes.White;
                             el.ToolTipMode = MarkerTooltipMode.Always;
+                            gmap.Overlays[0].Markers.Add(el);
                         }
-                        gmap.Overlays[0].Markers.Add(el);
                     }
                     ukupno = tmpPesaci.Item2;
                     break;
@@ -334,15 +401,16 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        el.ToolTipText = uzimanjeZnamenitostiNaOsnovuKoordinata(el.Position);
-                        if (!(el.ToolTipText).Equals(""))
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        if (!znamenitost.Equals("\"\""))
                         {
+                            el.ToolTipText = znamenitost;
                             el.ToolTip.Fill = Brushes.Black;
                             el.ToolTip.Foreground = Brushes.White;
                             el.ToolTip.TextPadding = new Size(10, 10);
                             el.ToolTipMode = MarkerTooltipMode.Always;
+                            gmap.Overlays[0].Markers.Add(el);
                         }
-                        gmap.Overlays[0].Markers.Add(el);
                     }
                     ukupno = tmpVozila.Item2;
                     break;
@@ -353,14 +421,15 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        el.ToolTipText = uzimanjeZnamenitostiNaOsnovuKoordinata(el.Position);
-                        if (!(el.ToolTipText).Equals(""))
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        if (!znamenitost.Equals("\"\""))
                         {
+                            el.ToolTipText = znamenitost;
                             el.ToolTip.Fill = Brushes.Black;
                             el.ToolTip.Foreground = Brushes.White;
                             el.ToolTipMode = MarkerTooltipMode.Always;
+                            gmap.Overlays[0].Markers.Add(el);
                         }
-                        gmap.Overlays[0].Markers.Add(el);
                     }
                     ukupno = tmpTaxi.Item2;
                     break;
@@ -368,21 +437,44 @@ namespace WindowsFormsApp2
 
             currentDijkstra.Stroke = new Pen(Color.Green, 5);
             gmap.Overlays[0].Routes.Add(currentDijkstra);
+            //VLADAN NOVO: Rute "za spajanje" sa grafom
+            List<PointLatLng> ptsStart = new List<PointLatLng>();
+            List<PointLatLng> ptsFinish = new List<PointLatLng>();
+            ptsStart.Add(first.Position);
+            ptsStart.Add(positions[getNearestPoint(first)]);
+            GMapRoute routeStart = new GMapRoute(ptsStart, "");
+
+            ptsFinish.Add(second.Position);
+            ptsFinish.Add(positions[getNearestPoint(second)]);
+            GMapRoute routeFinish = new GMapRoute(ptsFinish, "");
+
+            routeStart.Stroke = new Pen(Color.Red, 5);
+            routeFinish.Stroke = new Pen(Color.Red, 5);
+
+            gmap.Overlays[0].Routes.Add(routeStart);
+            gmap.Overlays[0].Routes.Add(routeFinish);
+
+
+            //VLADAN NOVO: razdaljina od pocetka/kraja do prvog u grafu
+            
+            double distStart = distance(first, graph.getMarkerFromInt(getNearestPoint(first)));
+            double distFinish = distance(second, graph.getMarkerFromInt(getNearestPoint(second)));
 
             switch (i)
             {
                 case 0:
                     //LUKA : zaoukruzivanje na 2/3 decimale
-                    tbUkupno.Text = Math.Round(ukupno, 3) + "km";
+                    //VLADAN NOVO: Ubacio i "random cvorove"
+                    tbUkupno.Text = Math.Round(ukupno + distStart + distFinish, 3) + "km";
                     break;
                 case 1:
                     //brzina coveka kad pesaci je u proseku  4.5 km/h sto je 0.075 km/minut
                     double brzina = 0.075;
-                    double vreme = ukupno / brzina;
+                    double vreme = (distStart + distFinish + ukupno) / brzina;
                     tbUkupno.Text = Math.Round(vreme, 2).ToString() + "  minuta";
                     break;
                 case 2:
-                    tbUkupno.Text = Math.Round(ukupno, 2).ToString() + " minuta";
+                    tbUkupno.Text = Math.Round(ukupno + (distFinish + distStart)/0.075, 2).ToString() + " minuta";
                     break;
                 case 3:
                     ukupno += 2.8;
@@ -399,11 +491,19 @@ namespace WindowsFormsApp2
 
         private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            PointLatLng point = gmap.FromLocalToLatLng(e.X, e.Y);
-            graph.Add(point);
-            gmap.Overlays[0].Markers.Add(graph.getMarkerFromInt(graph.getSize() - 1));
+            if(!click_count)
+            {
+                first = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.red_dot);
+                click_count = true;
+                gmap.Overlays[0].Markers.Add(first);
+                return;
+            }
+            second = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.green_dot); ;
+            click_count = true;
+            dijkstraBt.Visible = true;
+            gmap.Overlays[0].Markers.Add(second);
         }
-
+        /*
         private void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
 
@@ -430,9 +530,7 @@ namespace WindowsFormsApp2
                 gmap.Overlays[0].Routes.Remove(currentDijkstra);
 
             }
-
-
-        }
+        }*/
 
         private void dijkstraBt_Click(object sender, EventArgs e)
         {
@@ -440,19 +538,23 @@ namespace WindowsFormsApp2
             //       if (rbManuelno.Checked == true)
             //           drawDijkstraRoute(first.Position, second.Position, 0);
 
+            //VLADAN NOVO
+            PointLatLng positionStart = positions[getNearestPoint(first)];
+            PointLatLng positionFinish = positions[getNearestPoint(second)];
+
             if (rbPeske.Checked == true)
-                drawDijkstraRoute(first.Position, second.Position, 1);
+                drawDijkstraRoute(positionStart, positionFinish, 1);
 
             if (rbVozilo.Checked == true)
-                drawDijkstraRoute(first.Position, second.Position, 2);
+                drawDijkstraRoute(positionStart, positionFinish, 2);
 
             if (rbTaksi.Checked == true)
-                drawDijkstraRoute(first.Position, second.Position, 3);
+                drawDijkstraRoute(positionStart, positionFinish, 3);
             //LUKA:ovde obojene u crveno marker bojim ponovo u plavo nakon sto sam iscrtao dijsktru
-            GMapMarker obelezeni1 = new GMarkerGoogle(first.Position, GMarkerGoogleType.blue);
-            GMapMarker obelezeni2 = new GMarkerGoogle(second.Position, GMarkerGoogleType.blue);
+            /*GMapMarker obelezeni1 = new GMarkerGoogle(positionStart, GMarkerGoogleType.blue);
+            GMapMarker obelezeni2 = new GMarkerGoogle(positionFinish, GMarkerGoogleType.blue);
             gmap.Overlays[0].Markers.Add(obelezeni1);
-            gmap.Overlays[0].Markers.Add(obelezeni2);
+            gmap.Overlays[0].Markers.Add(obelezeni2);*/
 
             click_count = false;
             dijkstraBt.Visible = false;
@@ -472,6 +574,22 @@ namespace WindowsFormsApp2
             uputstvo1.Visible = false;
             hideLabel.Visible = false;
             hideHelpbt.Visible = false;
+        }
+
+        //VLADAN NOVO: Jednostavno, klikom brisemo sve (osim ako vec nismo slucajno startnu lokaciju izabrali, pa da ne pomesamo nesto)
+        private void gmap_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!click_count)
+            {
+                gmap.Overlays[0].Markers.Clear();
+                gmap.Overlays[0].Routes.Clear();
+                tbUkupno.Clear();
+            }
         }
     }
 }
