@@ -86,31 +86,15 @@ namespace WindowsFormsApp2
         {
             return new Tuple<double, double>(Math.Cos(pt.Lat) * Math.Cos(pt.Lng), Math.Sin(pt.Lat) * Math.Cos(pt.Lng));
         }
+
+        //MILOJE ispravka fje in polygon:
+        // postoji vec ugradjeno haha  
         private bool inPolygon(GMapMarker marker) {
-            //double x1, y1, x2, y2, x3, y3, x4, y4, x, y;
-            double  [] x = new double[4];
-            double [] y = new double[4];
-            x[0] = xyProjection(polygon.Points[0]).Item1;
-            x[1] = xyProjection(polygon.Points[1]).Item1;
-            x[2] = xyProjection(polygon.Points[2]).Item1;
-            x[3] = xyProjection(polygon.Points[3]).Item1;
-            y[0] = xyProjection(polygon.Points[0]).Item2;
-            y[1]= xyProjection(polygon.Points[1]).Item2;
-            y[2] = xyProjection(polygon.Points[2]).Item2;
-            y[3] = xyProjection(polygon.Points[3]).Item2;
-            Array.Sort(x);
-            Array.Sort(y);
-            double xt = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item1;
-            double yt = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item2;
+          
 
-            if (xt < (x[0]+x[1])/2) return false;
-            if (xt> (x[2]+x[3])/2) return false;
-            if (yt < (y[0]+y[1])/2) return false;
-            if (yt > (y[2]+y[3])/2) return false;
-
-            return true;
+            return polygon.IsInside(new PointLatLng(marker.Position.Lat, marker.Position.Lng));
             
-            //return (y > (y4 - y1) / (x4 - x1) * (x - x1) + y1 && y > (y3 - y4) / (x3 - x4) * (x - x4) + y4 && y < (y3 - y2) / (x3 - x2) * (x - x2) + y2 && y < (y2 - y1) / (x2 - x1) * (x - x1) + y1) ;
+            
         }
 
         

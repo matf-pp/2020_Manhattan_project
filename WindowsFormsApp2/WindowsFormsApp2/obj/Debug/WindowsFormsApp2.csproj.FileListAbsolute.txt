@@ -87,3 +87,16 @@ C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\2020_Manhatta
 C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\GMap.NET.WindowsForms.dll
 C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
 C:\Users\Ryzen\Desktop\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.help.resources
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\GMap.NET.Core.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.form1.resources
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.help.resources
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
