@@ -43,6 +43,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.help1 = new WindowsFormsApp2.help();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -119,11 +120,13 @@
             // 
             // tbUkupno
             // 
+            this.tbUkupno.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUkupno.Location = new System.Drawing.Point(3, 217);
             this.tbUkupno.Name = "tbUkupno";
             this.tbUkupno.ReadOnly = true;
-            this.tbUkupno.Size = new System.Drawing.Size(190, 20);
+            this.tbUkupno.Size = new System.Drawing.Size(190, 21);
             this.tbUkupno.TabIndex = 15;
+            this.tbUkupno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dijkstraBt
             // 
@@ -145,6 +148,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.help1);
             this.panel1.Controls.Add(this.hideLabel);
             this.panel1.Controls.Add(this.hideHelpbt);
             this.panel1.Controls.Add(this.label1);
@@ -184,7 +188,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 108);
+            this.label1.Size = new System.Drawing.Size(296, 75);
             this.label1.TabIndex = 19;
             this.label1.Text = "Manhattan Project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -230,12 +234,16 @@
             // Clear
             // 
             this.Clear.AccessibleName = "Clear";
+            this.Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Clear.FlatAppearance.BorderSize = 0;
+            this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Clear.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clear.Location = new System.Drawing.Point(59, 468);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(75, 23);
             this.Clear.TabIndex = 19;
             this.Clear.Text = "Clear";
-            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.UseVisualStyleBackColor = false;
             this.Clear.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel5
@@ -245,6 +253,14 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
+            // 
+            // help1
+            // 
+            this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.help1.Location = new System.Drawing.Point(-1, 206);
+            this.help1.Name = "help1";
+            this.help1.Size = new System.Drawing.Size(304, 453);
+            this.help1.TabIndex = 26;
             // 
             // form1
             // 
@@ -285,6 +301,7 @@
         private System.Windows.Forms.Panel hideLabel;
         //private uputstvo uputstvo1;
         private System.Windows.Forms.Button Clear;
+        private help help1;
     }
 }
 

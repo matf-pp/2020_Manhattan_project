@@ -173,7 +173,8 @@ namespace WindowsFormsApp2
             InitializeComponent();
             hideHelpbt.Visible = false;
             hideLabel.Visible = false;
-            //uputstvo1.Visible = false;
+            help1.Visible = false;
+            rbPeske.Checked = true;
 
         }
 
@@ -594,7 +595,7 @@ namespace WindowsFormsApp2
         //LUKA NOVO :dugme za prikaz helpa
         private void button2_Click(object sender, EventArgs e)
         {
-            //uputstvo1.Visible = true;
+            help1.Visible = true;
             hideLabel.Visible = true;
             hideHelpbt.Visible = true;
         }
@@ -602,7 +603,7 @@ namespace WindowsFormsApp2
         //LUKA NOVO:dugme za brisanje help-a
         private void button1_Click(object sender, EventArgs e)
         {
-            //uputstvo1.Visible = false;
+            help1.Visible = false;
             hideLabel.Visible = false;
             hideHelpbt.Visible = false;
         }
