@@ -1,6 +1,6 @@
 # 2020_Manhattan_project
 
-Aplikacija za nalazenje najoptimalnijeg puta od pocetne do kranje izabrane tacke. Optimalan put u smislu cene taksija, vremena potrebnog autom ili 
+Aplikacija za nalazenje optimalnog puta od pocetne do kranje izabrane tacke. Optimalan put u smislu cene taksija, vremena potrebnog autom ili 
 razdaljina u kilometrima ako korisnik odabere da ide peske.
 Takodje, prikazuju se i znamenitosti pored kojih korisnik prodje.
 Koriscen je algoritam Dijkstra.
