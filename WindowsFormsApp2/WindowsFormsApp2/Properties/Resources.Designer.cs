@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApp2.Properties
-{
-
-
+namespace WindowsFormsApp2.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,246 @@ namespace WindowsFormsApp2.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsFormsApp2.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 141,142,0.0493399809092064
+        ///142,141,0.0493399809092064
+        ///142,143,0.0386734630302267
+        ///143,142,0.0386734630302267
+        ///142,144,0.0772829111868959
+        ///144,142,0.0772829111868959
+        ///144,145,0.040307627221592
+        ///145,144,0.040307627221592
+        ///145,146,0.0384501503351312
+        ///146,145,0.0384501503351312
+        ///146,147,0.0404321965023511
+        ///147,146,0.0404321965023511
+        ///147,148,0.0423848009361595
+        ///148,147,0.0423848009361595
+        ///148,149,0.0360695039001949
+        ///149,148,0.0360695039001949
+        ///149,150,0.0413605213385691
+        ///150,149,0.0413605213385691
+        ///150,151,0. [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string granePesaci {
+            get {
+                return ResourceManager.GetString("granePesaci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string granePesaciVladan {
+            get {
+                return ResourceManager.GetString("granePesaciVladan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 141,140,48.51;82.00500000000001
+        ///140,141,48.66;67.515
+        ///140,94,48.51;82.00500000000001
+        ///94,140,48.66;67.515
+        ///94,93,49.125;82.572
+        ///93,94,49.145999999999994;67.24199999999999
+        ///93,47,49.125;82.572
+        ///47,93,49.145999999999994;67.24199999999999
+        ///47,46,48.690000000000005;81.387
+        ///46,47,48.723;67.599
+        ///46,0,48.690000000000005;81.387
+        ///0,46,48.723;67.599
+        ///30,31,7.388999999999999;10.563
+        ///31,30,6.981;11.391
+        ///31,193,7.388999999999999;10.563
+        ///193,31,6.981;11.391
+        ///193,194,15.093;23.469
+        ///194,193,14.781;23.025
+        ///194,77,15.093;23 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string graneVremena {
+            get {
+                return ResourceManager.GetString("graneVremena", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 141,140,45.7974177019249;46.9721655352321;44.271287416998;47.0595162136105;50.8104485183984;50.8437216305527;43.2767672326941;50.7234825797693;51.3547282941373;41.5896037281219;51.3612715625117;41.3830277854889;57.7804560186493;57.5022125753026;52.6046832790303;52.9302978356361;56.5169143534046;49.2360339280386;49.6938046729666;53.7703227285754;55.8769535066453;54.9227551504237;54.8904668202281;53.965394275027
+        ///140,141,45.9390300015598;47.1174103266212;44.4081806990542;47.205031106046;50.9675618409661;51.00 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string graneVremena24 {
+            get {
+                return ResourceManager.GetString("graneVremena24", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 207,206,29.2954224963182;51.7455875905694
+        ///206,205,36.579622150128;65.7694180240347
+        ///205,204,30.165134071624;44.9940646999329
+        ///204,94,37.5749936832685;53.0541237694561
+        ///207,208,38.6820396287759;46.1851000778419
+        ///208,209,28.0158958944942;44.8783181405667
+        ///209,210,40.4935402940881;68.1331031881786
+        ///210,211,40.900773973718;42.1941745386636
+        ///211,212,42.1110349797324;38.4817256759916
+        ///212,213,55.3978599333551;70.566795918145
+        ///141,214,68.7442232962885;108.485356193956
+        ///214,213,60.9582272427211;87.0928355278343
+        ///2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string graneVremenaVladan {
+            get {
+                return ResourceManager.GetString("graneVremenaVladan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 40.757266, -73.989794;0,&quot;&quot;
+        ///40.757494, -73.989603;1,&quot;&quot;
+        ///40.757902, -73.989316;2,&quot;&quot;
+        ///40.758232, -73.989077;3,&quot;&quot;
+        ///40.758542, -73.988872;4,&quot;&quot;
+        ///40.758850, -73.988614;5,&quot;&quot;
+        ///40.759159, -73.988398;6,&quot;&quot;
+        ///40.759485, -73.988148;7,&quot;&quot;
+        ///40.759793, -73.987924;8,&quot;&quot;
+        ///40.760107, -73.987644;9,&quot;&quot;
+        ///40.760404, -73.987446;10,&quot;&quot;
+        ///40.760741, -73.987225;11,&quot;&quot;
+        ///40.761027, -73.987008;12,&quot;&quot;
+        ///40.761353, -73.986762;13,Hotel Garden Inn Times Square
+        ///40.761658, -73.986552;14,&quot;&quot;
+        ///40.761984, -73.986358;15,&quot;&quot;
+        ///40.762279, -73.986110;16,&quot;&quot;
+        ///40 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string menhetn_cvorovi {
+            get {
+                return ResourceManager.GetString("menhetn_cvorovi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 40.757266, -73.989794;0,&quot;&quot;
+        ///40.757494, -73.989603;1,&quot;&quot;
+        ///40.757902, -73.989316;2,&quot;&quot;
+        ///40.758232, -73.989077;3,&quot;&quot;
+        ///40.758542, -73.988872;4,&quot;&quot;
+        ///40.758850, -73.988614;5,&quot;&quot;
+        ///40.759159, -73.988398;6,&quot;&quot;
+        ///40.759485, -73.988148;7,&quot;&quot;
+        ///40.759793, -73.987924;8,&quot;&quot;
+        ///40.760107, -73.987644;9,&quot;&quot;
+        ///40.760404, -73.987446;10,&quot;&quot;
+        ///40.760741, -73.987225;11,&quot;&quot;
+        ///40.761027, -73.987008;12,&quot;&quot;
+        ///40.761353, -73.986762;13,Hotel Garden Inn Times Square
+        ///40.761658, -73.986552;14,&quot;&quot;
+        ///40.761984, -73.986358;15,&quot;&quot;
+        ///40.762279, -73.986110;16,&quot;&quot;
+        ///40 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string menhetn_cvorovi_vladan {
+            get {
+                return ResourceManager.GetString("menhetn_cvorovi_vladan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 141,140,0.16491469853019
+        ///140,141,0.16491469853019
+        ///140,94,0.145153875360144
+        ///94,140,0.145153875360144
+        ///94,93,0.154117648843563
+        ///93,94,0.154117648843563
+        ///93,47,0.122336713374137
+        ///47,93,0.122336713374137
+        ///47,46,0.148782571414194
+        ///46,47,0.148782571414194
+        ///46,0,0.12738871181619
+        ///0,46,0.12738871181619
+        ///30,31,0.0490448049301014
+        ///31,30,0.0490448049301014
+        ///31,193,0.0459762092145975
+        ///193,31,0.0459762092145975
+        ///193,194,0.101884035231661
+        ///194,193,0.101884035231661
+        ///194,77,0.0769207351329935
+        ///77,194,0.0769207351329935 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string razdaljinaVozila {
+            get {
+                return ResourceManager.GetString("razdaljinaVozila", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 141,140,0.16491469853019
+        ///140,141,0.16491469853019
+        ///140,94,0.145153875360144
+        ///94,140,0.145153875360144
+        ///94,93,0.154117648843563
+        ///93,94,0.154117648843563
+        ///93,47,0.122336713374137
+        ///47,93,0.122336713374137
+        ///47,46,0.148782571414194
+        ///46,47,0.148782571414194
+        ///46,0,0.12738871181619
+        ///0,46,0.12738871181619
+        ///30,31,0.0490448049301014
+        ///31,30,0.0490448049301014
+        ///31,193,0.0459762092145975
+        ///193,31,0.0459762092145975
+        ///193,194,0.101884035231661
+        ///194,193,0.101884035231661
+        ///194,77,0.0769207351329935
+        ///77,194,0.0769207351329935 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string razdaljinaVozilaVladan {
+            get {
+                return ResourceManager.GetString("razdaljinaVozilaVladan", resourceCulture);
             }
         }
     }

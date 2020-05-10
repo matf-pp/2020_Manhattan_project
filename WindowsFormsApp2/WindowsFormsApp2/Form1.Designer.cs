@@ -43,7 +43,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.uputstvo1 = new WindowsFormsApp2.uputstvo();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +85,7 @@
             this.rbPeske.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbPeske.Location = new System.Drawing.Point(64, 257);
             this.rbPeske.Name = "rbPeske";
-            this.rbPeske.Size = new System.Drawing.Size(70, 24);
+            this.rbPeske.Size = new System.Drawing.Size(62, 21);
             this.rbPeske.TabIndex = 12;
             this.rbPeske.TabStop = true;
             this.rbPeske.Text = "Peske";
@@ -99,7 +98,7 @@
             this.rbVozilo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbVozilo.Location = new System.Drawing.Point(64, 280);
             this.rbVozilo.Name = "rbVozilo";
-            this.rbVozilo.Size = new System.Drawing.Size(75, 24);
+            this.rbVozilo.Size = new System.Drawing.Size(70, 21);
             this.rbVozilo.TabIndex = 13;
             this.rbVozilo.TabStop = true;
             this.rbVozilo.Text = "Autom";
@@ -112,7 +111,7 @@
             this.rbTaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbTaksi.Location = new System.Drawing.Point(64, 305);
             this.rbTaksi.Name = "rbTaksi";
-            this.rbTaksi.Size = new System.Drawing.Size(59, 24);
+            this.rbTaksi.Size = new System.Drawing.Size(55, 21);
             this.rbTaksi.TabIndex = 17;
             this.rbTaksi.TabStop = true;
             this.rbTaksi.Text = "Taksi";
@@ -147,7 +146,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.hideLabel);
-            this.panel1.Controls.Add(this.uputstvo1);
             this.panel1.Controls.Add(this.hideHelpbt);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel3);
@@ -156,6 +154,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(304, 659);
             this.panel1.TabIndex = 19;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // hideLabel
             // 
@@ -247,15 +246,6 @@
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
             // 
-            // uputstvo1
-            // 
-            this.uputstvo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uputstvo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.163636F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uputstvo1.Location = new System.Drawing.Point(-3, 211);
-            this.uputstvo1.Name = "uputstvo1";
-            this.uputstvo1.Size = new System.Drawing.Size(299, 369);
-            this.uputstvo1.TabIndex = 25;
-            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +283,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button hideHelpbt;
         private System.Windows.Forms.Panel hideLabel;
-        private uputstvo uputstvo1;
+        //private uputstvo uputstvo1;
         private System.Windows.Forms.Button Clear;
     }
 }

@@ -15,6 +15,7 @@ using System.Threading;
 using System.IO;
 using Microsoft.SqlServer.Server;
 using System.Runtime.InteropServices;
+using GMap.NET.ObjectModel;
 
 namespace WindowsFormsApp2
 {
@@ -63,8 +64,8 @@ namespace WindowsFormsApp2
         {
             if(!inPolygon(marker))
             {
-                //MessageBox.Show("Marker nije u pokrivenoj oblasti.");
-                //return -1;
+                
+                return -1;
             }
             int nearest = 0;
             double nearestDist = distance(marker, graph.getMarkerFromInt(0));
@@ -86,20 +87,30 @@ namespace WindowsFormsApp2
             return new Tuple<double, double>(Math.Cos(pt.Lat) * Math.Cos(pt.Lng), Math.Sin(pt.Lat) * Math.Cos(pt.Lng));
         }
         private bool inPolygon(GMapMarker marker) {
-            double x1, y1, x2, y2, x3, y3, x4, y4, x, y;
-            x1 = xyProjection(polygon.Points[0]).Item1;
-            x2 = xyProjection(polygon.Points[1]).Item1;
-            x3 = xyProjection(polygon.Points[2]).Item1;
-            x4 = xyProjection(polygon.Points[3]).Item1;
-            y1 = xyProjection(polygon.Points[0]).Item2;
-            y2 = xyProjection(polygon.Points[1]).Item2;
-            y3 = xyProjection(polygon.Points[2]).Item2;
-            y4 = xyProjection(polygon.Points[3]).Item2;
+            //double x1, y1, x2, y2, x3, y3, x4, y4, x, y;
+            double  [] x = new double[4];
+            double [] y = new double[4];
+            x[0] = xyProjection(polygon.Points[0]).Item1;
+            x[1] = xyProjection(polygon.Points[1]).Item1;
+            x[2] = xyProjection(polygon.Points[2]).Item1;
+            x[3] = xyProjection(polygon.Points[3]).Item1;
+            y[0] = xyProjection(polygon.Points[0]).Item2;
+            y[1]= xyProjection(polygon.Points[1]).Item2;
+            y[2] = xyProjection(polygon.Points[2]).Item2;
+            y[3] = xyProjection(polygon.Points[3]).Item2;
+            Array.Sort(x);
+            Array.Sort(y);
+            double xt = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item1;
+            double yt = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item2;
 
-            x = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item1;
-            y = xyProjection(new PointLatLng(marker.Position.Lat, marker.Position.Lng)).Item2;
+            if (xt < (x[0]+x[1])/2) return false;
+            if (xt> (x[2]+x[3])/2) return false;
+            if (yt < (y[0]+y[1])/2) return false;
+            if (yt > (y[2]+y[3])/2) return false;
 
-            return (y > (y4 - y1) / (x4 - x1) * (x - x1) + y1 && y > (y3 - y4) / (x3 - x4) * (x - x4) + y4 && y < (y3 - y2) / (x3 - x2) * (x - x2) + y2 && y < (y2 - y1) / (x2 - x1) * (x - x1) + y1) ;
+            return true;
+            
+            //return (y > (y4 - y1) / (x4 - x1) * (x - x1) + y1 && y > (y3 - y4) / (x3 - x4) * (x - x4) + y4 && y < (y3 - y2) / (x3 - x2) * (x - x2) + y2 && y < (y2 - y1) / (x2 - x1) * (x - x1) + y1) ;
         }
 
         
@@ -123,7 +134,9 @@ namespace WindowsFormsApp2
         private string uzimanjeZnamenitostiNaOsnovuKoordinata(PointLatLng point)
         {
             //LUKA: zamenio sam apsolutnu putanju relativnom
-            string textFilePath = @"..\..\..\..\menhetn_cvorovi.txt";
+
+            string textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "menhetn_cvorovi.txt");
+
             System.IO.FileStream filestream = new System.IO.FileStream(textFilePath,
                                                      System.IO.FileMode.Open,
                                                      System.IO.FileAccess.Read,
@@ -160,7 +173,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             hideHelpbt.Visible = false;
             hideLabel.Visible = false;
-            uputstvo1.Visible = false;
+            //uputstvo1.Visible = false;
 
         }
 
@@ -202,13 +215,14 @@ namespace WindowsFormsApp2
            
             GMapOverlay markers = new GMapOverlay("markers");
 
-            string textFilePath = @"..\..\..\..\menhetn_cvorovi.txt";
+            string textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "menhetn_cvorovi.txt");
+
             System.IO.FileStream filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
                                                       System.IO.FileShare.ReadWrite);
-            var file = new System.IO.StreamReader(filestream, System.Text.Encoding.UTF8, true, 128);
-
+              var file = new System.IO.StreamReader(filestream, System.Text.Encoding.UTF8, true, 128);
+            
             string linijaTeksta;
             while ((linijaTeksta = file.ReadLine()) != null)
             {
@@ -239,12 +253,12 @@ namespace WindowsFormsApp2
 
             }
             // gmap.Overlays.Add(markers);
-            filestream.Close();
+            //filestream.Close();
 
 
 
             //Ucitavam grane iz genersianih fajlova
-            textFilePath = @"..\..\..\..\granePesaci.txt";
+            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "granePesaci.txt");
             filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -278,7 +292,7 @@ namespace WindowsFormsApp2
             //Formula taksija u Njujorku je : 2,5$ (pocetno) + 0.3$ (taksa) + 0.5$(po 1/5 milje) + 0.5$(po minutu) + 0.5$ (ako je tarifa==2) + 1$(ako je tarifa==1)
             //Zato je tezina grane za taksi 0.5*5/1.61*rastojanjeGrana+0.5*vremeGrana
 
-            string rastojanjaPath = @"..\..\..\..\razdaljinaVozila.txt";
+            string rastojanjaPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "razdaljinaVozila.txt");
             System.IO.FileStream filestreamRastojanja = new System.IO.FileStream(rastojanjaPath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -287,7 +301,7 @@ namespace WindowsFormsApp2
 
             var fileRastojanja = new System.IO.StreamReader(filestreamRastojanja, System.Text.Encoding.UTF8, true, 128);
 
-            textFilePath = @"..\..\..\..\graneVremena24.txt";
+            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "graneVremena24.txt"); 
             filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -485,23 +499,32 @@ namespace WindowsFormsApp2
                     tbUkupno.Text = Math.Round(ukupno, 2).ToString() + " $";
                     break;
             }
+           
 
         }
 
 
         private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(!click_count)
+            
+            
+            if (!click_count)
             {
+                gmap.Overlays[0].Clear();// Za ovu liniju ces me castiti Kovacevicu!
                 first = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.red_dot);
                 click_count = true;
                 gmap.Overlays[0].Markers.Add(first);
                 return;
-            }
-            second = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.green_dot); ;
-            click_count = true;
-            dijkstraBt.Visible = true;
-            gmap.Overlays[0].Markers.Add(second);
+            } 
+          
+                second = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.green_dot); ;
+                click_count = true;
+                dijkstraBt.Visible = true;
+                gmap.Overlays[0].Markers.Add(second);
+
+            
+                
+
         }
         /*
         private void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
@@ -539,8 +562,16 @@ namespace WindowsFormsApp2
             //           drawDijkstraRoute(first.Position, second.Position, 0);
 
             //VLADAN NOVO
-            PointLatLng positionStart = positions[getNearestPoint(first)];
-            PointLatLng positionFinish = positions[getNearestPoint(second)];
+            int closestFirst = getNearestPoint(first);
+            int closestSecond = getNearestPoint(second);
+            if (closestFirst == -1 || closestSecond == -1)
+            {
+                click_count = false;
+                MessageBox.Show("Bar jedna tacka nije u pokrivenoj oblasti.");
+                return; // za ovo ces me tek castiti Kovacevicu
+            }
+            PointLatLng positionStart = positions[closestFirst];
+            PointLatLng positionFinish = positions[closestSecond];
 
             if (rbPeske.Checked == true)
                 drawDijkstraRoute(positionStart, positionFinish, 1);
@@ -563,7 +594,7 @@ namespace WindowsFormsApp2
         //LUKA NOVO :dugme za prikaz helpa
         private void button2_Click(object sender, EventArgs e)
         {
-            uputstvo1.Visible = true;
+            //uputstvo1.Visible = true;
             hideLabel.Visible = true;
             hideHelpbt.Visible = true;
         }
@@ -571,7 +602,7 @@ namespace WindowsFormsApp2
         //LUKA NOVO:dugme za brisanje help-a
         private void button1_Click(object sender, EventArgs e)
         {
-            uputstvo1.Visible = false;
+            //uputstvo1.Visible = false;
             hideLabel.Visible = false;
             hideHelpbt.Visible = false;
         }
@@ -584,12 +615,18 @@ namespace WindowsFormsApp2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            
             if (!click_count)
             {
                 gmap.Overlays[0].Markers.Clear();
                 gmap.Overlays[0].Routes.Clear();
                 tbUkupno.Clear();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

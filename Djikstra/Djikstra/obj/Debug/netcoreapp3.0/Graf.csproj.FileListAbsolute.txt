@@ -1,0 +1,11 @@
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Graf.csprojAssemblyReference.cache
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Graf.AssemblyInfoInputs.cache
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Graf.AssemblyInfo.cs
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.exe
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.deps.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.runtimeconfig.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.runtimeconfig.dev.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Graf.pdb
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Graf.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Graf.pdb

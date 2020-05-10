@@ -1,0 +1,11 @@
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.exe
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.deps.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.runtimeconfig.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.runtimeconfig.dev.json
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\bin\Debug\netcoreapp3.0\Djikstra.pdb
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Djikstra.csprojAssemblyReference.cache
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Djikstra.AssemblyInfoInputs.cache
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Djikstra.AssemblyInfo.cs
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Djikstra.dll
+C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\Projekat\Djikstra\Djikstra\obj\Debug\netcoreapp3.0\Djikstra.pdb
