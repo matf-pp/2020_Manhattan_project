@@ -21,5 +21,5 @@ Formula za racunanje cene taksija: https://www.taxi-calculator.com/taxi-fare-new
 
 Radili:
 Miloje Joksimovic joksimovic21@gmail.com
-Vladan Kovacevic
+Vladan Kovacevic vkovac01@gmail.com
 Luka Djorovic luka.djorovic3010@gmail.com
