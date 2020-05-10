@@ -100,3 +100,4 @@ C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project
 C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
 C:\Users\joksi\OneDrive\Desktop\MATF\Programske paradigme\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
+C:\Users\Ryzen\Desktop\2020_Manhattan_project\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
