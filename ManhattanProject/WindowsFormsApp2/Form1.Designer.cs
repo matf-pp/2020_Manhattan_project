@@ -38,7 +38,6 @@ namespace WindowsFormsApp2
             this.tbUkupno = new System.Windows.Forms.TextBox();
             this.dijkstraBt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.help1 = new WindowsFormsApp2.help();
             this.hideLabel = new System.Windows.Forms.Panel();
             this.hideHelpbt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,6 +48,8 @@ namespace WindowsFormsApp2
             this.label2 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.help1 = new WindowsFormsApp2.help();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -166,14 +167,6 @@ namespace WindowsFormsApp2
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // help1
-            // 
-            this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.help1.Location = new System.Drawing.Point(1, 226);
-            this.help1.Name = "help1";
-            this.help1.Size = new System.Drawing.Size(304, 454);
-            this.help1.TabIndex = 26;
-            // 
             // hideLabel
             // 
             this.hideLabel.BackColor = System.Drawing.Color.Red;
@@ -234,6 +227,7 @@ namespace WindowsFormsApp2
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.linkLabel1);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.Clear);
@@ -242,6 +236,7 @@ namespace WindowsFormsApp2
             this.panel4.Controls.Add(this.rbPeske);
             this.panel4.Controls.Add(this.rbVozilo);
             this.panel4.Controls.Add(this.rbTaksi);
+            this.panel4.ForeColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(312, 1);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(218, 659);
@@ -249,10 +244,11 @@ namespace WindowsFormsApp2
             // 
             // linkLabel1
             // 
-            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(3, 450);
+            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.linkLabel1.Location = new System.Drawing.Point(3, 441);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(208, 23);
+            this.linkLabel1.Size = new System.Drawing.Size(208, 72);
             this.linkLabel1.TabIndex = 23;
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -266,7 +262,7 @@ namespace WindowsFormsApp2
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 21);
             this.label2.TabIndex = 20;
-            this.label2.Text = "LINK DO ZNAMENITOSTI:\r\n";
+            this.label2.Text = "LINK OD ZNAMENITOSTI:\r\n";
             // 
             // Clear
             // 
@@ -275,6 +271,7 @@ namespace WindowsFormsApp2
             this.Clear.FlatAppearance.BorderSize = 0;
             this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Clear.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clear.ForeColor = System.Drawing.Color.Black;
             this.Clear.Location = new System.Drawing.Point(10, 243);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(205, 83);
@@ -290,6 +287,25 @@ namespace WindowsFormsApp2
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(9, 329);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(205, 91);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "klikom na marker koji \r\nobelezava znamenitost\r\ndolazi do pojave linka\r\nna kom moz" +
+    "emo saznati \r\nnesto vise o istoj\r\n ";
+            // 
+            // help1
+            // 
+            this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.help1.Location = new System.Drawing.Point(1, 226);
+            this.help1.Name = "help1";
+            this.help1.Size = new System.Drawing.Size(304, 454);
+            this.help1.TabIndex = 26;
             // 
             // form1
             // 
@@ -337,6 +353,7 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Clear;
         private LinkLabel linkLabel1;
+        private Label label3;
     }
 }
 

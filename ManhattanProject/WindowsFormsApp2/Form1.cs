@@ -137,6 +137,9 @@ namespace WindowsFormsApp2
             hideLabel.Visible = false;
             help1.Visible = false;
             rbPeske.Checked = true;
+            label3.Visible = false;
+            label2.Visible = false;
+            linkLabel1.Visible = false;
 
         }
 
@@ -205,7 +208,7 @@ namespace WindowsFormsApp2
                 //VLADAN NOVO
                 znamenitosti.Add(splitPoZarezu[1]);
                 //LUKA NOVO
-                linkovi.Add(splitPoZarezu[1]);
+                linkovi.Add(splitPoZarezu[2]);
                 
                 
                 // mapa_Cvorova.Add(Convert.ToInt32(splitPoRazmaku[0]), new Tuple<double, double, string>(x, y, splitPoRazmaku[1]));
@@ -481,6 +484,9 @@ namespace WindowsFormsApp2
                 first = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.red_dot);
                 click_count = true;
                 gmap.Overlays[0].Markers.Add(first);
+                label2.Visible = false;
+                label3.Visible = false;
+                linkLabel1.Visible = false;
                 return;
             } 
           
@@ -535,6 +541,10 @@ namespace WindowsFormsApp2
 
             click_count = false;
             dijkstraBt.Visible = false;
+            label2.Visible = true;
+            label3.Visible = true;
+            linkLabel1.Text = "";
+            linkLabel1.Visible = true;
             return;
         }
         //LUKA NOVO :dugme za prikaz helpa
@@ -567,6 +577,11 @@ namespace WindowsFormsApp2
                 gmap.Overlays[0].Markers.Clear();
                 gmap.Overlays[0].Routes.Clear();
                 tbUkupno.Clear();
+                //LUKA : ovo je gasenje onih labelova sto sam ja dodao za linkove
+                label2.Visible = false;
+                label3.Visible = false;
+                linkLabel1.Text = "";
+                linkLabel1.Visible = false;
             }
         }
 
@@ -582,7 +597,7 @@ namespace WindowsFormsApp2
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.google.com");
+            Process.Start(linkLabel1.Text.Trim());
 
         }
     }
