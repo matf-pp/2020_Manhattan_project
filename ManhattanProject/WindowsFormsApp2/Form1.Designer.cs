@@ -174,9 +174,9 @@
             this.hideHelpbt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideHelpbt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hideHelpbt.ForeColor = System.Drawing.Color.White;
-            this.hideHelpbt.Location = new System.Drawing.Point(5, 175);
+            this.hideHelpbt.Location = new System.Drawing.Point(5, 180);
             this.hideHelpbt.Name = "hideHelpbt";
-            this.hideHelpbt.Size = new System.Drawing.Size(291, 30);
+            this.hideHelpbt.Size = new System.Drawing.Size(291, 25);
             this.hideHelpbt.TabIndex = 24;
             this.hideHelpbt.Text = "Hide help";
             this.hideHelpbt.UseVisualStyleBackColor = true;
@@ -209,9 +209,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(9, 71);
+            this.button2.Location = new System.Drawing.Point(9, 74);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(290, 98);
+            this.button2.Size = new System.Drawing.Size(290, 95);
             this.button2.TabIndex = 22;
             this.button2.Text = "Help";
             this.button2.UseVisualStyleBackColor = false;
@@ -257,9 +257,9 @@
             // help1
             // 
             this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.help1.Location = new System.Drawing.Point(-1, 206);
+            this.help1.Location = new System.Drawing.Point(1, 226);
             this.help1.Name = "help1";
-            this.help1.Size = new System.Drawing.Size(304, 453);
+            this.help1.Size = new System.Drawing.Size(304, 454);
             this.help1.TabIndex = 26;
             // 
             // form1

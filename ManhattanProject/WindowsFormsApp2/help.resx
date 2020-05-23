@@ -118,23 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>-Izabrati nacin prevoza (peske,autom, taksi)
-
--Dupli klik za odabir startne 
+    <value>-  Izabrati nacin prevoza (peske,autom, taksi)
+-  Dupli klik za odabir startne 
 pozicije
-
--Dupli klik za odabir krajnje
+-  Dupli klik za odabir krajnje
 pozicije
-
--Na mapi uociti optimalan
+-  Obe pozicije moraju biti unutar
+zelenog poligona  obelezenog 
+na mapi (u suprotnom bice 
+prikazana odgovarajuca poruka)
+-  Na mapi uociti optimalan
  put, sa ispisom znamenitosti 
 na koju nailazite kretanjem tim 
 putem
-
--U TextBox-u ce se pojaviti 
+-  U TextBox-u ce se pojaviti 
 optimalno vreme (u slucaju 
 odabira opcije "peske" ili 
 "autom"), ili cena voznje (u
-slucaju odabira opcije "taksi"</value>
+slucaju odabira opcije "taksi"
+</value>
   </data>
 </root>
