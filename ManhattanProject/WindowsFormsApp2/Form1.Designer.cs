@@ -38,17 +38,17 @@ namespace WindowsFormsApp2
             this.tbUkupno = new System.Windows.Forms.TextBox();
             this.dijkstraBt = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.help1 = new WindowsFormsApp2.help();
             this.hideLabel = new System.Windows.Forms.Panel();
             this.hideHelpbt = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.help1 = new WindowsFormsApp2.help();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +146,7 @@ namespace WindowsFormsApp2
             this.dijkstraBt.Name = "dijkstraBt";
             this.dijkstraBt.Size = new System.Drawing.Size(213, 74);
             this.dijkstraBt.TabIndex = 18;
-            this.dijkstraBt.Text = "dijkstra";
+            this.dijkstraBt.Text = "Put";
             this.dijkstraBt.UseVisualStyleBackColor = false;
             this.dijkstraBt.Click += new System.EventHandler(this.dijkstraBt_Click);
             // 
@@ -165,6 +165,14 @@ namespace WindowsFormsApp2
             this.panel1.Size = new System.Drawing.Size(304, 659);
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // help1
+            // 
+            this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.help1.Location = new System.Drawing.Point(1, 226);
+            this.help1.Name = "help1";
+            this.help1.Size = new System.Drawing.Size(304, 454);
+            this.help1.TabIndex = 26;
             // 
             // hideLabel
             // 
@@ -239,6 +247,16 @@ namespace WindowsFormsApp2
             this.panel4.Size = new System.Drawing.Size(218, 659);
             this.panel4.TabIndex = 21;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(3, 450);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(208, 23);
+            this.linkLabel1.TabIndex = 23;
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -272,24 +290,6 @@ namespace WindowsFormsApp2
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(3, 450);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(208, 23);
-            this.linkLabel1.TabIndex = 23;
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // help1
-            // 
-            this.help1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.help1.Location = new System.Drawing.Point(1, 226);
-            this.help1.Name = "help1";
-            this.help1.Size = new System.Drawing.Size(304, 454);
-            this.help1.TabIndex = 26;
             // 
             // form1
             // 

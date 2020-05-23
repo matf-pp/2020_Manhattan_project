@@ -178,8 +178,8 @@ namespace WindowsFormsApp2
            
             GMapOverlay markers = new GMapOverlay("markers");
 
-            string textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "menhetn_cvorovi.txt");
-
+            string textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"menhetn_cvorovi.txt");
+                                    
             System.IO.FileStream filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -225,7 +225,7 @@ namespace WindowsFormsApp2
 
 
             //Ucitavam grane iz genersianih fajlova
-            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "granePesaci.txt");
+            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"granePesaci.txt");
             filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -259,7 +259,7 @@ namespace WindowsFormsApp2
             //Formula taksija u Njujorku je : 2,5$ (pocetno) + 0.3$ (taksa) + 0.5$(po 1/5 milje) + 0.5$(po minutu) + 0.5$ (ako je tarifa==2) + 1$(ako je tarifa==1)
             //Zato je tezina grane za taksi 0.5*5/1.61*rastojanjeGrana+0.5*vremeGrana
 
-            string rastojanjaPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "razdaljinaVozila.txt");
+            string rastojanjaPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"razdaljinaVozila.txt");
             System.IO.FileStream filestreamRastojanja = new System.IO.FileStream(rastojanjaPath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -268,7 +268,7 @@ namespace WindowsFormsApp2
 
             var fileRastojanja = new System.IO.StreamReader(filestreamRastojanja, System.Text.Encoding.UTF8, true, 128);
 
-            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "graneVremena24.txt"); 
+            textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"graneVremena24.txt"); 
             filestream = new System.IO.FileStream(textFilePath,
                                                       System.IO.FileMode.Open,
                                                       System.IO.FileAccess.Read,
@@ -429,8 +429,8 @@ namespace WindowsFormsApp2
             ptsFinish.Add(positions[getNearestPoint(second)]);
             GMapRoute routeFinish = new GMapRoute(ptsFinish, "");
 
-            routeStart.Stroke = new Pen(Color.Red, 5);
-            routeFinish.Stroke = new Pen(Color.Red, 5);
+            routeStart.Stroke = new Pen(Color.Blue, 5);
+            routeFinish.Stroke = new Pen(Color.Blue, 5);
 
             gmap.Overlays[0].Routes.Add(routeStart);
             gmap.Overlays[0].Routes.Add(routeFinish);

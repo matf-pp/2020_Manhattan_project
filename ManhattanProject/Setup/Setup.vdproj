@@ -15,43 +15,55 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2B88A24D188247D18CD415A4ADB7C6A5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F4DAABB00E64DDD9412C4E7410741D8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_46B821DFB8054FCA89A319071DEDAA1F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5A5E838E2F9848FA923818F6F319DDA0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6996587C09B8B85193BA4F7F0637A4C2"
+        "MsmKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
         "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6996587C09B8B85193BA4F7F0637A4C2"
-        "OwnerKey" = "8:_91C150E6121622629133B5D47F7F7A9A"
+        "MsmKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
+        "OwnerKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7435912FB8BF4E9FB9911C6168779788"
+        "MsmKey" = "8:_1991572426814495B1DEEA91E7534076"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2D0AA1BB1B3348E7AF2DDF76365D8B3E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_54282875BC984FBFABD6753FCA693740"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_54F0B18271004FFB9654435BA4585406"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6696966537284B5BB244812E4A88D439"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E5E9ADCB4324FFD83CFB6C08168B12E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7164718B4202487F980DC91ABD97AEDA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -63,19 +75,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_91C150E6121622629133B5D47F7F7A9A"
-        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A0856E5F570847DD9DCD0A05473376FA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ADA04AD8BD5A418694C8DCB93BDC9D7B"
+        "MsmKey" = "8:_A647ABDC487E49DA945A8A2748079051"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,20 +87,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CB6766059D30403EBCE973DC35819A3E"
+        "MsmKey" = "8:_F0690ECCA35E427D885F1676689B0825"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F263C94FF475456992786C0A9F8384DB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_917B8E2BF6DACD2F26E41E311B5CB98B"
+        "MsmKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
+        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,13 +106,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_91C150E6121622629133B5D47F7F7A9A"
+        "OwnerKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6996587C09B8B85193BA4F7F0637A4C2"
+        "OwnerKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_917B8E2BF6DACD2F26E41E311B5CB98B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -139,6 +139,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -155,6 +171,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -184,94 +208,14 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B88A24D188247D18CD415A4ADB7C6A5"
-            {
-            "SourcePath" = "8:..\\..\\graneVremenaVladan.txt"
-            "TargetName" = "8:graneVremenaVladan.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2F4DAABB00E64DDD9412C4E7410741D8"
-            {
-            "SourcePath" = "8:..\\..\\graneVremena24.txt"
-            "TargetName" = "8:graneVremena24.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46B821DFB8054FCA89A319071DEDAA1F"
-            {
-            "SourcePath" = "8:..\\..\\razdaljinaVozilaVladan.txt"
-            "TargetName" = "8:razdaljinaVozilaVladan.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5A5E838E2F9848FA923818F6F319DDA0"
-            {
-            "SourcePath" = "8:..\\..\\granePesaci.txt"
-            "TargetName" = "8:granePesaci.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6996587C09B8B85193BA4F7F0637A4C2"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_10D31CE56737A3AC6EFA522A2EACF1CB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6996587C09B8B85193BA4F7F0637A4C2"
+                    "_10D31CE56737A3AC6EFA522A2EACF1CB"
                     {
                     "Name" = "8:GMap.NET.Core.dll"
                     "Attributes" = "3:512"
@@ -295,10 +239,130 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7435912FB8BF4E9FB9911C6168779788"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1991572426814495B1DEEA91E7534076"
             {
-            "SourcePath" = "8:..\\..\\razdaljinaVozila.txt"
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\menhetn_cvorovi.txt"
+            "TargetName" = "8:menhetn_cvorovi.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D0AA1BB1B3348E7AF2DDF76365D8B3E"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\graneVremenaVladan.txt"
+            "TargetName" = "8:graneVremenaVladan.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54282875BC984FBFABD6753FCA693740"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\razdaljinaVozila.txt"
             "TargetName" = "8:razdaljinaVozila.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54F0B18271004FFB9654435BA4585406"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\granePesaciVladan.txt"
+            "TargetName" = "8:granePesaciVladan.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6696966537284B5BB244812E4A88D439"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\menhetn_cvorovi_vladan.txt"
+            "TargetName" = "8:menhetn_cvorovi_vladan.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E5E9ADCB4324FFD83CFB6C08168B12E"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\granePesaci.txt"
+            "TargetName" = "8:granePesaci.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7164718B4202487F980DC91ABD97AEDA"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\razdaljinaVozilaVladan.txt"
+            "TargetName" = "8:razdaljinaVozilaVladan.txt"
             "Tag" = "8:"
             "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
             "Condition" = "8:"
@@ -346,14 +410,54 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_91C150E6121622629133B5D47F7F7A9A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A647ABDC487E49DA945A8A2748079051"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\graneVremena.txt"
+            "TargetName" = "8:graneVremena.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F0690ECCA35E427D885F1676689B0825"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\graneVremena24.txt"
+            "TargetName" = "8:graneVremena24.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA777F3A0F9B9243F71013AD6A16FBAD"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_91C150E6121622629133B5D47F7F7A9A"
+                    "_FA777F3A0F9B9243F71013AD6A16FBAD"
                     {
                     "Name" = "8:GMap.NET.WindowsForms.dll"
                     "Attributes" = "3:512"
@@ -375,86 +479,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A0856E5F570847DD9DCD0A05473376FA"
-            {
-            "SourcePath" = "8:..\\..\\graneVremena.txt"
-            "TargetName" = "8:graneVremena.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ADA04AD8BD5A418694C8DCB93BDC9D7B"
-            {
-            "SourcePath" = "8:..\\..\\menhetn_cvorovi_vladan.txt"
-            "TargetName" = "8:menhetn_cvorovi_vladan.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB6766059D30403EBCE973DC35819A3E"
-            {
-            "SourcePath" = "8:..\\..\\menhetn_cvorovi.txt"
-            "TargetName" = "8:menhetn_cvorovi.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F263C94FF475456992786C0A9F8384DB"
-            {
-            "SourcePath" = "8:..\\..\\granePesaciVladan.txt"
-            "TargetName" = "8:granePesaciVladan.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -525,7 +549,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{A9712553-9383-4DA5-9420-BF88029058F6}"
-        "PackageCode" = "8:{56739126-AB41-49A0-83C8-39A9A4FF0FCA}"
+        "PackageCode" = "8:{C6B4FED8-DDFC-4557-88E7-C5D4AF7F0EAD}"
         "UpgradeCode" = "8:{9A03DC58-406F-43C7-9243-78770D893CF7}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
