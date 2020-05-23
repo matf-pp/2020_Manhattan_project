@@ -1,4 +1,7 @@
-﻿namespace WindowsFormsApp2
+﻿using System;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp2
 {
     partial class form1
     {
@@ -41,8 +44,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.help1 = new WindowsFormsApp2.help();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -58,7 +63,7 @@
             this.gmap.GrayScaleMode = false;
             this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gmap.LevelsKeepInMemmory = 5;
-            this.gmap.Location = new System.Drawing.Point(511, 0);
+            this.gmap.Location = new System.Drawing.Point(532, 0);
             this.gmap.MarkersEnabled = true;
             this.gmap.MaxZoom = 18;
             this.gmap.MinZoom = 2;
@@ -72,9 +77,10 @@
             this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmap.ShowTileGridLines = false;
-            this.gmap.Size = new System.Drawing.Size(922, 659);
+            this.gmap.Size = new System.Drawing.Size(901, 659);
             this.gmap.TabIndex = 0;
-            this.gmap.Zoom = 15D;
+            this.gmap.Zoom = 16D;
+            this.gmap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gmap_OnMarkerClick);
             this.gmap.Load += new System.EventHandler(this.gmap_Load);
             this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
             this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
@@ -84,7 +90,7 @@
             this.rbPeske.AutoSize = true;
             this.rbPeske.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbPeske.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rbPeske.Location = new System.Drawing.Point(64, 257);
+            this.rbPeske.Location = new System.Drawing.Point(64, 148);
             this.rbPeske.Name = "rbPeske";
             this.rbPeske.Size = new System.Drawing.Size(62, 21);
             this.rbPeske.TabIndex = 12;
@@ -97,7 +103,7 @@
             this.rbVozilo.AutoSize = true;
             this.rbVozilo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbVozilo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rbVozilo.Location = new System.Drawing.Point(64, 280);
+            this.rbVozilo.Location = new System.Drawing.Point(64, 175);
             this.rbVozilo.Name = "rbVozilo";
             this.rbVozilo.Size = new System.Drawing.Size(70, 21);
             this.rbVozilo.TabIndex = 13;
@@ -110,7 +116,7 @@
             this.rbTaksi.AutoSize = true;
             this.rbTaksi.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbTaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rbTaksi.Location = new System.Drawing.Point(64, 305);
+            this.rbTaksi.Location = new System.Drawing.Point(64, 202);
             this.rbTaksi.Name = "rbTaksi";
             this.rbTaksi.Size = new System.Drawing.Size(55, 21);
             this.rbTaksi.TabIndex = 17;
@@ -121,10 +127,10 @@
             // tbUkupno
             // 
             this.tbUkupno.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUkupno.Location = new System.Drawing.Point(3, 217);
+            this.tbUkupno.Location = new System.Drawing.Point(3, 101);
             this.tbUkupno.Name = "tbUkupno";
             this.tbUkupno.ReadOnly = true;
-            this.tbUkupno.Size = new System.Drawing.Size(190, 21);
+            this.tbUkupno.Size = new System.Drawing.Size(212, 21);
             this.tbUkupno.TabIndex = 15;
             this.tbUkupno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -135,10 +141,10 @@
             this.dijkstraBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dijkstraBt.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dijkstraBt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dijkstraBt.Location = new System.Drawing.Point(2, 120);
+            this.dijkstraBt.Location = new System.Drawing.Point(2, 10);
             this.dijkstraBt.Margin = new System.Windows.Forms.Padding(2);
             this.dijkstraBt.Name = "dijkstraBt";
-            this.dijkstraBt.Size = new System.Drawing.Size(191, 74);
+            this.dijkstraBt.Size = new System.Drawing.Size(213, 74);
             this.dijkstraBt.TabIndex = 18;
             this.dijkstraBt.Text = "dijkstra";
             this.dijkstraBt.UseVisualStyleBackColor = false;
@@ -220,6 +226,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Controls.Add(this.linkLabel1);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.Clear);
             this.panel4.Controls.Add(this.dijkstraBt);
             this.panel4.Controls.Add(this.tbUkupno);
@@ -228,8 +236,19 @@
             this.panel4.Controls.Add(this.rbTaksi);
             this.panel4.Location = new System.Drawing.Point(312, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(193, 659);
+            this.panel4.Size = new System.Drawing.Size(218, 659);
             this.panel4.TabIndex = 21;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(10, 420);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 21);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "LINK DO ZNAMENITOSTI:\r\n";
             // 
             // Clear
             // 
@@ -237,10 +256,10 @@
             this.Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Clear.FlatAppearance.BorderSize = 0;
             this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Clear.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clear.Location = new System.Drawing.Point(59, 468);
+            this.Clear.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clear.Location = new System.Drawing.Point(10, 243);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.Size = new System.Drawing.Size(205, 83);
             this.Clear.TabIndex = 19;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = false;
@@ -253,6 +272,16 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(3, 450);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(208, 23);
+            this.linkLabel1.TabIndex = 23;
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // help1
             // 
@@ -283,6 +312,11 @@
 
         }
 
+        private void gmap_OnMarkerClick(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private GMap.NET.WindowsForms.GMapControl gmap;
@@ -299,9 +333,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button hideHelpbt;
         private System.Windows.Forms.Panel hideLabel;
-        //private uputstvo uputstvo1;
-        private System.Windows.Forms.Button Clear;
         private help help1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Clear;
+        private LinkLabel linkLabel1;
     }
 }
 

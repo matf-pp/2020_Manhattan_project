@@ -16,6 +16,7 @@ using System.IO;
 using Microsoft.SqlServer.Server;
 using System.Runtime.InteropServices;
 using GMap.NET.ObjectModel;
+using System.Diagnostics;
 
 namespace WindowsFormsApp2
 {
@@ -40,14 +41,16 @@ namespace WindowsFormsApp2
         private GMapMarker second;
 
         //VLADAN NOVO: Indexi markera najblizih pocetnoj lokaciji
-        private int firstNearest;
-        private int secondNearest;
+        //private int firstNearest;
+        //private int secondNearest;
 
         private GMapRoute currentDijkstra;
         private int tarifa = 0;
 
         //VLADAN NOVO: Cuvamo znamenitosti u listi
         private List<string> znamenitosti = new List<string>();
+        //LUKA NOVO: Cuvamo linkove u listi
+        private List<string> linkovi = new List<string>();
 
         //Racunanje razdaljine izmedju dve tacke (tip argumenata menjamo po potrebi)
         public static double distance(GMapMarker marker1, GMapMarker marker2)
@@ -115,41 +118,16 @@ namespace WindowsFormsApp2
 
         //LUKA:funkcija koja na osnovu koordindata vraca string koji predstavlja ime znamenitosti (iz onog mog fajla)
         //..radi tako sto za dati point prolazi kroz ceo fajl i poroverava jednakost sa koordinatama iz fajla , ako se poklope vraca string
-        private string uzimanjeZnamenitostiNaOsnovuKoordinata(PointLatLng point)
-        {
-            //LUKA: zamenio sam apsolutnu putanju relativnom
-
-            string textFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "menhetn_cvorovi.txt");
-
-            System.IO.FileStream filestream = new System.IO.FileStream(textFilePath,
-                                                     System.IO.FileMode.Open,
-                                                     System.IO.FileAccess.Read,
-                                                     System.IO.FileShare.ReadWrite);
-            var file = new System.IO.StreamReader(filestream, System.Text.Encoding.UTF8, true, 128);
-            string linijaTeksta;
-            while ((linijaTeksta = file.ReadLine()) != null)
-            {
-                if (linijaTeksta == String.Empty)
-                {
-                    break;
-                }
-                string[] splitPoTackaZarez = linijaTeksta.Split(';');
-                string[] koordinate = splitPoTackaZarez[0].Split(',');
-                double x = Convert.ToDouble(koordinate[0]);
-                double y = Convert.ToDouble(koordinate[1]);
-                string[] splitPoRazmaku = splitPoTackaZarez[1].Split(',');
-                if (point.Lat == x && point.Lng == y && splitPoRazmaku[1].Length != 2)
-                {
-                    return splitPoRazmaku[1];
-                }
-            }
-            return "";
-        }
+        
 
         //VLADAN NOVO
-        private string uzimanjeZnamenitostiNaOsnovuKoordinata(int i)
+        private string uzimanjeZnamenitostiNaOsnovuIndeksa(int i)
         {
             return znamenitosti[i];
+        }
+
+        public string uzimanjeLinkaNaOsnovuIndeksa(int i) {
+            return linkovi[i];
         }
 
         public form1()
@@ -223,9 +201,13 @@ namespace WindowsFormsApp2
                 GMapMarker marker = new GMarkerGoogle(
                     point,
                     GMarkerGoogleType.blue_pushpin);
-                string[] splitPoRazmaku = splitPoTackaZarez[1].Split(',');
+                string[] splitPoZarezu = splitPoTackaZarez[1].Split(',');
                 //VLADAN NOVO
-                znamenitosti.Add(splitPoRazmaku[1]);
+                znamenitosti.Add(splitPoZarezu[1]);
+                //LUKA NOVO
+                linkovi.Add(splitPoZarezu[1]);
+                
+                
                 // mapa_Cvorova.Add(Convert.ToInt32(splitPoRazmaku[0]), new Tuple<double, double, string>(x, y, splitPoRazmaku[1]));
                 markers.Markers.Add(marker);
 
@@ -361,7 +343,7 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        el.ToolTipText = uzimanjeZnamenitostiNaOsnovuKoordinata(el.Position);
+                        el.ToolTipText = uzimanjeZnamenitostiNaOsnovuIndeksa(int.Parse(el.Tag.ToString()));
                         if (!(el.ToolTipText).Equals(""))
                         {
                             el.ToolTip.Fill = Brushes.Black;
@@ -380,7 +362,7 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuIndeksa(int.Parse(el.Tag.ToString()));
                         if (znamenitost != "\"\"")
                         {
                             el.ToolTipText = znamenitost;
@@ -400,7 +382,7 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuIndeksa(int.Parse(el.Tag.ToString()));
                         if (!znamenitost.Equals("\"\""))
                         {
                             el.ToolTipText = znamenitost;
@@ -420,7 +402,7 @@ namespace WindowsFormsApp2
                     foreach (GMapMarker el in listaMarkera)
                     {
                         currentDijkstra.Points.Add(el.Position);
-                        string znamenitost = uzimanjeZnamenitostiNaOsnovuKoordinata(int.Parse(el.Tag.ToString()));
+                        string znamenitost = uzimanjeZnamenitostiNaOsnovuIndeksa(int.Parse(el.Tag.ToString()));
                         if (!znamenitost.Equals("\"\""))
                         {
                             el.ToolTipText = znamenitost;
@@ -511,34 +493,13 @@ namespace WindowsFormsApp2
                 
 
         }
-        /*
-        private void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        private void  gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
 
             //LUKA:ako nisam kliknuo na pocetni pre ovoga, onda dodajem novi marker preko njega i bojim ga u crveno
             //..ne znam kako da promenim boju markeru
-            if (!click_count)
-            {
-                first = item;
-                click_count = true;
-                GMapMarker obelezeni = new GMarkerGoogle(item.Position, GMarkerGoogleType.red);
-                gmap.Overlays[0].Markers.Add(obelezeni);
-                return;
-            }
-            //LUKA : ako sam pre ovoga vec obojio jedan marker, onda obojim i ovog na kojeg sam kliknuo
-            if (click_count)
-            {
-                izbrisiZnamenitosti();
-                second = item;
-                GMapMarker obelezeni = new GMarkerGoogle(item.Position, GMarkerGoogleType.red);
-                gmap.Overlays[0].Markers.Add(obelezeni);
-                //LUKA:dugme dijsktra postaje vidljivo
-                dijkstraBt.Visible = true;
-                //Da bi se obrisao prethodni Djikstra
-                gmap.Overlays[0].Routes.Remove(currentDijkstra);
-
-            }
-        }*/
+            linkLabel1.Text =uzimanjeLinkaNaOsnovuIndeksa(int.Parse(item.Tag.ToString()));
+        }
 
         private void dijkstraBt_Click(object sender, EventArgs e)
         {
@@ -611,6 +572,17 @@ namespace WindowsFormsApp2
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void linkZname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.google.com");
 
         }
     }
