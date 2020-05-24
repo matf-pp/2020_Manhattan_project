@@ -15,18 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
-        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
-        "OwnerKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1991572426814495B1DEEA91E7534076"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +23,12 @@
         {
         "MsmKey" = "8:_2D0AA1BB1B3348E7AF2DDF76365D8B3E"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4961009CD15FAC5870ECB124F6EF7E23"
+        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,6 +52,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6E5E9ADCB4324FFD83CFB6C08168B12E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6F9337AB2FF94D6E9F984FD274C8A1A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,18 +87,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B1F171448940E1D78D2F43E280A47ED4"
+        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1F171448940E1D78D2F43E280A47ED4"
+        "OwnerKey" = "8:_4961009CD15FAC5870ECB124F6EF7E23"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F0690ECCA35E427D885F1676689B0825"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
-        "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B030D1DA7473430AA646E1B519607111"
         "MsmSig" = "8:_UNDEFINED"
@@ -106,13 +112,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FA777F3A0F9B9243F71013AD6A16FBAD"
+        "OwnerKey" = "8:_4961009CD15FAC5870ECB124F6EF7E23"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_10D31CE56737A3AC6EFA522A2EACF1CB"
+        "OwnerKey" = "8:_B1F171448940E1D78D2F43E280A47ED4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,6 +184,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -208,37 +222,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_10D31CE56737A3AC6EFA522A2EACF1CB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_10D31CE56737A3AC6EFA522A2EACF1CB"
-                    {
-                    "Name" = "8:GMap.NET.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:GMap.NET.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1991572426814495B1DEEA91E7534076"
             {
             "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\menhetn_cvorovi.txt"
@@ -277,6 +260,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4961009CD15FAC5870ECB124F6EF7E23"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4961009CD15FAC5870ECB124F6EF7E23"
+                    {
+                    "Name" = "8:GMap.NET.WindowsForms.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:GMap.NET.WindowsForms.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54282875BC984FBFABD6753FCA693740"
@@ -343,6 +357,26 @@
             {
             "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\granePesaci.txt"
             "TargetName" = "8:granePesaci.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F9337AB2FF94D6E9F984FD274C8A1A1"
+            {
+            "SourcePath" = "8:..\\WindowsFormsApp2\\tower_0_02Y_icon.ico"
+            "TargetName" = "8:tower_0_02Y_icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
             "Condition" = "8:"
@@ -430,6 +464,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B1F171448940E1D78D2F43E280A47ED4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B1F171448940E1D78D2F43E280A47ED4"
+                    {
+                    "Name" = "8:GMap.NET.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:GMap.NET.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F0690ECCA35E427D885F1676689B0825"
             {
             "SourcePath" = "8:..\\WindowsFormsApp2\\bin\\Debug\\graneVremena24.txt"
@@ -448,37 +513,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA777F3A0F9B9243F71013AD6A16FBAD"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_FA777F3A0F9B9243F71013AD6A16FBAD"
-                    {
-                    "Name" = "8:GMap.NET.WindowsForms.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:GMap.NET.WindowsForms.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -519,7 +553,7 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_883D72C7F5BC4D77978E68DC201C4094"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_69B3487B8658418ABDC5178E8EEF1B33"
                     {
                     "Name" = "8:App"
                     "AlwaysCreate" = "11:FALSE"
@@ -671,7 +705,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B631A592A9304DEA99C9F9035CE79D0F"
             {
-            "Name" = "8:App Installer"
+            "Name" = "8:Manhattan Project"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -680,7 +714,7 @@
             "Target" = "8:_B030D1DA7473430AA646E1B519607111"
             "Folder" = "8:_B2C117CF062C4D139923D810875A117D"
             "WorkingFolder" = "8:_011B1BE2ECE643A982114A26500C7E29"
-            "Icon" = "8:"
+            "Icon" = "8:_6F9337AB2FF94D6E9F984FD274C8A1A1"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B8B23AE31110410EB6B42EF2B13D9C32"
@@ -692,7 +726,7 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_B030D1DA7473430AA646E1B519607111"
-            "Folder" = "8:_883D72C7F5BC4D77978E68DC201C4094"
+            "Folder" = "8:_69B3487B8658418ABDC5178E8EEF1B33"
             "WorkingFolder" = "8:_011B1BE2ECE643A982114A26500C7E29"
             "Icon" = "8:"
             "Feature" = "8:"

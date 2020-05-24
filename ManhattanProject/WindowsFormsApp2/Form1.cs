@@ -17,9 +17,13 @@ using Microsoft.SqlServer.Server;
 using System.Runtime.InteropServices;
 using GMap.NET.ObjectModel;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApp2
 {
+
+    //VLADAN v1.2: Za v1.2 promeniti dijkstru da u okolini pocetnog (krajnjeg) nadje najblize cvorove grafa, doda pocetni, i poveze ih sa tim najblizima
+    //Nakon toga, uklanja ta 2 cvora (pocetni i krajnji) i sve grane povezane sa njima
 
     public partial class form1 : Form
     {
@@ -36,13 +40,14 @@ namespace WindowsFormsApp2
 
         private GMapOverlay overlay = new GMapOverlay();    //sve cemo dodavati na jedan overlay                         
         private bool click_count = false;
+
+        //VLADAN v1.1: Promenom radiobutton-a za vec iscrtan put, crtamo drugi za izabranu drugu opciju
+        private bool pathActive = false;
+        
+
         //LUKA:obelezeni markeri koji predstavlja pocetni i krajnji cvor za dijsktru
         private GMapMarker first;
         private GMapMarker second;
-
-        //VLADAN NOVO: Indexi markera najblizih pocetnoj lokaciji
-        //private int firstNearest;
-        //private int secondNearest;
 
         private GMapRoute currentDijkstra;
         private int tarifa = 0;
@@ -115,10 +120,6 @@ namespace WindowsFormsApp2
                 cvorMarker.ToolTipMode = MarkerTooltipMode.Never;
             }
         }
-
-        //LUKA:funkcija koja na osnovu koordindata vraca string koji predstavlja ime znamenitosti (iz onog mog fajla)
-        //..radi tako sto za dati point prolazi kroz ceo fajl i poroverava jednakost sa koordinatama iz fajla , ako se poklope vraca string
-        
 
         //VLADAN NOVO
         private string uzimanjeZnamenitostiNaOsnovuIndeksa(int i)
@@ -484,14 +485,33 @@ namespace WindowsFormsApp2
                 first = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.red_dot);
                 click_count = true;
                 gmap.Overlays[0].Markers.Add(first);
+                tbUkupno.Clear();
                 label2.Visible = false;
                 label3.Visible = false;
                 linkLabel1.Visible = false;
+                dijkstraBt.Visible = false;
+                pathActive = false;
+                if (!inPolygon(first))
+                {
+                    first = null;
+                    gmap.Overlays[0].Markers.Clear();
+                    MessageBox.Show("Lokacija nije u oznacenom poligonu");
+                    click_count = false;
+                }
                 return;
             } 
           
                 second = new GMarkerGoogle(gmap.FromLocalToLatLng(e.X, e.Y), GMarkerGoogleType.green_dot); ;
-                click_count = true;
+                click_count = false;
+                if(!inPolygon(second))
+            {
+
+                first = null;
+                second = null;
+                gmap.Overlays[0].Markers.Clear();
+                MessageBox.Show("Lokacija nije u oznacenom poligonu");
+                return;
+            }
                 dijkstraBt.Visible = true;
                 gmap.Overlays[0].Markers.Add(second);
 
@@ -502,16 +522,19 @@ namespace WindowsFormsApp2
         private void  gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
 
-            //LUKA:ako nisam kliknuo na pocetni pre ovoga, onda dodajem novi marker preko njega i bojim ga u crveno
-            //..ne znam kako da promenim boju markeru
-            linkLabel1.Text =uzimanjeLinkaNaOsnovuIndeksa(int.Parse(item.Tag.ToString()));
+            //VLADAN V1.1: Moze se desiti da kliknemo na zeleni ili crveni marker
+            try
+            {
+                linkLabel1.Text = uzimanjeLinkaNaOsnovuIndeksa(int.Parse(item.Tag.ToString()));
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("Kliknuti samo na plave markere!");
+            }
         }
 
         private void dijkstraBt_Click(object sender, EventArgs e)
         {
-
-            //       if (rbManuelno.Checked == true)
-            //           drawDijkstraRoute(first.Position, second.Position, 0);
 
             //VLADAN NOVO
             int closestFirst = getNearestPoint(first);
@@ -533,11 +556,6 @@ namespace WindowsFormsApp2
 
             if (rbTaksi.Checked == true)
                 drawDijkstraRoute(positionStart, positionFinish, 3);
-            //LUKA:ovde obojene u crveno marker bojim ponovo u plavo nakon sto sam iscrtao dijsktru
-            /*GMapMarker obelezeni1 = new GMarkerGoogle(positionStart, GMarkerGoogleType.blue);
-            GMapMarker obelezeni2 = new GMarkerGoogle(positionFinish, GMarkerGoogleType.blue);
-            gmap.Overlays[0].Markers.Add(obelezeni1);
-            gmap.Overlays[0].Markers.Add(obelezeni2);*/
 
             click_count = false;
             dijkstraBt.Visible = false;
@@ -545,6 +563,7 @@ namespace WindowsFormsApp2
             label3.Visible = true;
             linkLabel1.Text = "";
             linkLabel1.Visible = true;
+            pathActive = true;
             return;
         }
         //LUKA NOVO :dugme za prikaz helpa
@@ -563,42 +582,78 @@ namespace WindowsFormsApp2
             hideHelpbt.Visible = false;
         }
 
-        //VLADAN NOVO: Jednostavno, klikom brisemo sve (osim ako vec nismo slucajno startnu lokaciju izabrali, pa da ne pomesamo nesto)
-        private void gmap_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
-            if (!click_count)
-            {
-                gmap.Overlays[0].Markers.Clear();
-                gmap.Overlays[0].Routes.Clear();
-                tbUkupno.Clear();
-                //LUKA : ovo je gasenje onih labelova sto sam ja dodao za linkove
-                label2.Visible = false;
-                label3.Visible = false;
-                linkLabel1.Text = "";
-                linkLabel1.Visible = false;
-            }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) // Clear button
         {
 
-        }
-
-        private void linkZname_TextChanged(object sender, EventArgs e)
-        {
-
+            gmap.Overlays[0].Markers.Clear();
+            gmap.Overlays[0].Routes.Clear();
+            tbUkupno.Clear();
+            first = null;
+            second = null;
+            click_count = false;
+            dijkstraBt.Visible = false;
+            //LUKA : ovo je gasenje onih labelova sto sam ja dodao za linkove
+            label2.Visible = false;
+            label3.Visible = false;
+            linkLabel1.Text = "";
+            linkLabel1.Visible = false;
+            pathActive = false;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabel1.Text.Trim());
-
         }
+
+
+        //Vladan v1.1: Sigurno moze pametnije...
+        //Ako vec imamo pocetni, kranji i korisnik se odlucio da iscrta put za jednu opciju, menjanjem opcije crta se novi put
+        private void rbPeske_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pathActive) reactivateDijkstra();
+        }
+
+        private void rbVozilo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pathActive) reactivateDijkstra();
+        }
+
+        private void rbTaksi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pathActive) reactivateDijkstra();
+        }
+        //Vladan v1.1
+        private void reactivateDijkstra()
+        {
+
+            label2.Visible = false;
+            label3.Visible = false;
+            linkLabel1.Text = "";
+            linkLabel1.Visible = false;
+            gmap.Overlays[0].Markers.Clear();
+            gmap.Overlays[0].Routes.Clear();
+
+            int closestFirst = getNearestPoint(first);
+            int closestSecond = getNearestPoint(second);
+            if (closestFirst == -1 || closestSecond == -1)
+            {
+                click_count = false;
+                MessageBox.Show("Bar jedna tacka nije u pokrivenoj oblasti.");
+                return; // za ovo ces me tek castiti Kovacevicu
+            }
+            PointLatLng positionStart = positions[closestFirst];
+            PointLatLng positionFinish = positions[closestSecond];
+            gmap.Overlays[0].Markers.Add(first);
+            gmap.Overlays[0].Markers.Add(second);
+
+            if (rbPeske.Checked == true)
+                drawDijkstraRoute(positionStart, positionFinish, 1);
+
+            if (rbVozilo.Checked == true)
+                drawDijkstraRoute(positionStart, positionFinish, 2);
+
+            if (rbTaksi.Checked == true)
+                drawDijkstraRoute(positionStart, positionFinish, 3);
+        } 
     }
 }

@@ -16,57 +16,57 @@ using System.IO;
 namespace WindowsFormsApp2
 {
     //Pomocna klasa za Milojevog Dijkstru
-    class DolazniPut : IComparable
+    class IncomingPath : IComparable
     {
         
-        private int cvor;
-        private double tezina;
+        private int vertex;
+        private double weight;
 
-        public DolazniPut(int mark, double t)
+        public IncomingPath(int mark, double t)
         {
-            cvor = mark;
-            tezina = t;
-        }
-
-        public int getCvor()
-        {
-            return cvor;
-        }
-        public double getTezina()
-        {
-            return tezina;
+            vertex = mark;
+            weight = t;
         }
 
-        public void setTezina(double t)
+        public int getVertex()
         {
-            tezina = t;
+            return vertex;
         }
-        public static bool operator <(DolazniPut x, DolazniPut y)
-            => x.tezina < y.tezina;
-        public static bool operator >(DolazniPut x, DolazniPut y)
-            => x.tezina > y.tezina;
+        public double getWeight()
+        {
+            return weight;
+        }
+
+        public void setweight(double t)
+        {
+            weight = t;
+        }
+        public static bool operator <(IncomingPath x, IncomingPath y)
+            => x.weight < y.weight;
+        public static bool operator >(IncomingPath x, IncomingPath y)
+            => x.weight > y.weight;
 
         public int CompareTo(Object obj)
         {
-            DolazniPut drugi = obj as DolazniPut;
-            return this.tezina.CompareTo(drugi.tezina);
+            IncomingPath second = obj as IncomingPath;
+            return this.weight.CompareTo(second.weight);
         }
     }
-
-    // MARKER = CVOR GRAFA
-    // GMapMarker, int i PointLatLng mozemo koristiti za cvorove !
-    // Moze umesto PointLatLng i Tuple<double, double> !
+    // VLADAN:
+    // marker ~ cvor grafa
+    // GMapMarker, int i PointLatLng mozemo koristiti za cvorove
     // Lako prelazimo sa jednog na drugo, opisano je ovde ispod
 
-    // GMapMarker -> int ===> int.Parse(marker.Tag.toSring())    (Tag - polje objekta marker, u njemu cuvam i redni broj markera)
+    // GMapMarker -> int ===> int.Parse(marker.Tag.toSring())    (Tag - polje objekta marker, u njemu cuvamo i redni broj markera)
     // int -> GMapMarker ===> getMarkerFromInt(i) ili intToMarker[i] (privatno, u klasi)
     // GMapMarker -> PointLatLng ===> marker.Position
     // PointLatLng -> GMapMarker ===> new GMapMarker(point)
-    // I obrnuto
+    // PointLatLng -> int ===> getIntFromPosition(point)
+ 
     class Graph
     {
 
-        //Za ispis u fajl tezine grana
+        //Za ispis u fajl tezine edge
         //private StreamWriter sw = new StreamWriter("graneVremenski.txt");
         //Mapiramo MARKERE sa REDNIM BROJEVIMA
         private Dictionary<int, GMapMarker> intToMarker = new Dictionary<int, GMapMarker>();
@@ -89,26 +89,13 @@ namespace WindowsFormsApp2
 
         }
 
-
-        public void AddEdge(GMapMarker marker1, GMapMarker marker2, double weight=0) //Funkcija za dodavanje grane izmednju postojecih cvorova
-        {
-            int index1 = int.Parse(marker1.Tag.ToString());
-            int index2 = int.Parse(marker2.Tag.ToString());
-            adjList[index1].Add(new Tuple<int, double>(index2, weight));
-           // Jer nisu sve neusmerene grane! adjList[index2].Add(new Tuple<int, double>(index1, weight));
-            //Dodajemo tezine grana u fajl dvosmerne za pesake, a jednosmerne za vozila!
-           
-               // sw.WriteLine(index1.ToString() + "," + index2.ToString() + "," + weight.ToString());
-            // sw.WriteLine(index2.ToString() + "," + index1.ToString() + "," + weight.ToString());
-           //  sw.Flush();
-
-        }
-
         public void AddEdge(int index1, int index2, double weight = 0) //Funkcija za dodavanje grane izmednju postojecih cvorova
         {
             adjList[index1].Add(new Tuple<int, double>(index2, weight));
+
+            //Miloje: Sluzi za lakse pisanje u datoteku iz koje se kasnije cita
             //Jer nisu sve neusmerene grane! adjList[index2].Add(new Tuple<int, double>(index1, weight));
-            //Dodajemo tezine grana u fajl dvosmerne za pesake, a jednosmerne za vozila!
+            //Dodajemo tezine edge u fajl dvosmerne za pesake, a jednosmerne za vozila!
             //sw.WriteLine(index1.ToString() + "," + index2.ToString() + "," + weight.ToString());
             // sw.WriteLine(index2.ToString() + "," + index1.ToString() + "," + weight.ToString());
             // sw.Flush();
@@ -137,7 +124,7 @@ namespace WindowsFormsApp2
             return routes;
         }
 
-        public double tezinaGrane(int a,int b)
+        public double edgeWeight(int a,int b)
         {
             if (a < 0)
                 return -1;
@@ -164,65 +151,65 @@ namespace WindowsFormsApp2
             while(v != u)
             {
                 listOfDijsktraMarkers.Add(intToMarker[v]);
-                duzina += tezinaGrane(parent[v],v);// obrnuto jer Dijkstra vraca cvorove unazad!
+                duzina += edgeWeight(parent[v],v);// obrnuto jer Dijkstra vraca cvorove unazad!
                 v = parent[v];
             }
             listOfDijsktraMarkers.Add(intToMarker[u]);
-            Tuple<List<GMapMarker>, double> finalno = new Tuple<List<GMapMarker>, double>(listOfDijsktraMarkers, duzina);
-            return finalno;
+            Tuple<List<GMapMarker>, double> final = new Tuple<List<GMapMarker>, double>(listOfDijsktraMarkers, duzina);
+            return final;
         }
 
        
 
-        public int[]  Dijkstra(int pocetniCvor, int zavrsniCvor)
+        public int[]  Dijkstra(int startVertex, int endVertex)
         {
 
-            int[] prethodnik = new int[size]; //Definisemo prethodni cvor svakog elementa u najkracem putu i onda cemo unazad procitati, tj. iscrtati put
+            int[] predecessors = new int[size]; //Definisemo prethodni cvor svakog elementa u najkracem putu i onda cemo unazad procitati, tj. iscrtati put
             for (int i = 0; i < size; i++)
-                prethodnik[i] = -1;
+                predecessors[i] = -1;
 
 
 
-            double[] cenaDo = new double[size];// Pamti cenu od poocetnog do i-tog cvora.
+            double[] priceTo = new double[size];// Pamti cenu od poocetnog do i-tog cvora.
                                                       //Postavljamo sve ceneDo u pocetku na "beskonacno", nama je ok da bude negativna vrednost, posto su sve tezine pozitivne.
 
-            SortedSet<DolazniPut> putevi = new SortedSet<DolazniPut>(); //Skladistimo predjene puteve 
+            SortedSet<IncomingPath> paths = new SortedSet<IncomingPath>(); //Skladistimo predjene puteve 
 
             double infinity = 1.7976931348623157E+308;
             for (int i = 0; i < size; i++)
             {
-                cenaDo[i] = infinity;
+                priceTo[i] = infinity;
             }
 
-            cenaDo[pocetniCvor] = 0;
-            putevi.Add(new DolazniPut(pocetniCvor, 0));
+            priceTo[startVertex] = 0;
+            paths.Add(new IncomingPath(startVertex, 0));
 
 
-            while (putevi.Count != 0)
+            while (paths.Count != 0)
             {
-                DolazniPut v = putevi.Min;
-                putevi.Remove(v);
-                int prethodniCvor = v.getCvor();
-                double prethodnaTezina = v.getTezina();
+                IncomingPath v = paths.Min;
+                paths.Remove(v);
+                int previousVertex = v.getVertex();
+                double previousWeight = v.getWeight();
 
-                for (int i = 0; i < adjList[prethodniCvor].Count; i++)
+                for (int i = 0; i < adjList[previousVertex].Count; i++)
                 {
-                    int trenutni = adjList[prethodniCvor][i].Item1;
-                    double grana = adjList[prethodniCvor][i].Item2;
-                    double trenutnaCena = cenaDo[prethodniCvor] + grana;
-                    if (trenutnaCena < cenaDo[trenutni])
+                    int tmpVertex = adjList[previousVertex][i].Item1;
+                    double edge = adjList[previousVertex][i].Item2;
+                    double currentPrice = priceTo[previousVertex] + edge;
+                    if (currentPrice < priceTo[tmpVertex])
                     {
-                        putevi.Remove(new DolazniPut(trenutni, cenaDo[trenutni]));//Brisemo trenutni put do cvora, da ne bismo prolazili posle opet kroz sve susede
-                        cenaDo[trenutni] = trenutnaCena;
-                        putevi.Add(new DolazniPut(trenutni, cenaDo[trenutni]));// Dodali smo novi najkraci put nakon promene 
-                        prethodnik[trenutni] = prethodniCvor;//Znamo da je prethodni cvor koji je vodio do naseg trenutnog cvora, zapravo ovaj cvor
+                        paths.Remove(new IncomingPath(tmpVertex, priceTo[tmpVertex]));//Brisemo trenutni put do cvora, da ne bismo prolazili posle opet kroz sve susede
+                        priceTo[tmpVertex] = currentPrice;
+                        paths.Add(new IncomingPath(tmpVertex, priceTo[tmpVertex]));// Dodali smo novi najkraci put nakon promene 
+                        predecessors[tmpVertex] = previousVertex;//Znamo da je prethodni cvor koji je vodio do naseg trenutnog cvora, zapravo ovaj cvor
                     }
 
                 }
 
             }
 
-            return prethodnik;
+            return predecessors;
         }
         public GMapMarker getMarkerFromInt(int u)
         {

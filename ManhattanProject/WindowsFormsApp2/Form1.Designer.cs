@@ -44,11 +44,11 @@ namespace WindowsFormsApp2
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.Clear = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.help1 = new WindowsFormsApp2.help();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -83,7 +83,7 @@ namespace WindowsFormsApp2
             this.gmap.Zoom = 16D;
             this.gmap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gmap_OnMarkerClick);
             this.gmap.Load += new System.EventHandler(this.gmap_Load);
-            this.gmap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseClick);
+            
             this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
             // 
             // rbPeske
@@ -93,11 +93,12 @@ namespace WindowsFormsApp2
             this.rbPeske.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbPeske.Location = new System.Drawing.Point(64, 148);
             this.rbPeske.Name = "rbPeske";
-            this.rbPeske.Size = new System.Drawing.Size(62, 21);
+            this.rbPeske.Size = new System.Drawing.Size(70, 24);
             this.rbPeske.TabIndex = 12;
             this.rbPeske.TabStop = true;
             this.rbPeske.Text = "Peske";
             this.rbPeske.UseVisualStyleBackColor = true;
+            this.rbPeske.CheckedChanged += new System.EventHandler(this.rbPeske_CheckedChanged);
             // 
             // rbVozilo
             // 
@@ -106,11 +107,12 @@ namespace WindowsFormsApp2
             this.rbVozilo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbVozilo.Location = new System.Drawing.Point(64, 175);
             this.rbVozilo.Name = "rbVozilo";
-            this.rbVozilo.Size = new System.Drawing.Size(70, 21);
+            this.rbVozilo.Size = new System.Drawing.Size(75, 24);
             this.rbVozilo.TabIndex = 13;
             this.rbVozilo.TabStop = true;
             this.rbVozilo.Text = "Autom";
             this.rbVozilo.UseVisualStyleBackColor = true;
+            this.rbVozilo.CheckedChanged += new System.EventHandler(this.rbVozilo_CheckedChanged);
             // 
             // rbTaksi
             // 
@@ -119,11 +121,12 @@ namespace WindowsFormsApp2
             this.rbTaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rbTaksi.Location = new System.Drawing.Point(64, 202);
             this.rbTaksi.Name = "rbTaksi";
-            this.rbTaksi.Size = new System.Drawing.Size(55, 21);
+            this.rbTaksi.Size = new System.Drawing.Size(59, 24);
             this.rbTaksi.TabIndex = 17;
             this.rbTaksi.TabStop = true;
             this.rbTaksi.Text = "Taksi";
             this.rbTaksi.UseVisualStyleBackColor = true;
+            this.rbTaksi.CheckedChanged += new System.EventHandler(this.rbTaksi_CheckedChanged);
             // 
             // tbUkupno
             // 
@@ -131,7 +134,7 @@ namespace WindowsFormsApp2
             this.tbUkupno.Location = new System.Drawing.Point(3, 101);
             this.tbUkupno.Name = "tbUkupno";
             this.tbUkupno.ReadOnly = true;
-            this.tbUkupno.Size = new System.Drawing.Size(212, 21);
+            this.tbUkupno.Size = new System.Drawing.Size(212, 23);
             this.tbUkupno.TabIndex = 15;
             this.tbUkupno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -165,14 +168,13 @@ namespace WindowsFormsApp2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(304, 659);
             this.panel1.TabIndex = 19;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // hideLabel
             // 
             this.hideLabel.BackColor = System.Drawing.Color.Red;
             this.hideLabel.Location = new System.Drawing.Point(3, 180);
             this.hideLabel.Name = "hideLabel";
-            this.hideLabel.Size = new System.Drawing.Size(10, 25);
+            this.hideLabel.Size = new System.Drawing.Size(10, 46);
             this.hideLabel.TabIndex = 25;
             // 
             // hideHelpbt
@@ -183,9 +185,9 @@ namespace WindowsFormsApp2
             this.hideHelpbt.ForeColor = System.Drawing.Color.White;
             this.hideHelpbt.Location = new System.Drawing.Point(5, 180);
             this.hideHelpbt.Name = "hideHelpbt";
-            this.hideHelpbt.Size = new System.Drawing.Size(291, 25);
+            this.hideHelpbt.Size = new System.Drawing.Size(291, 46);
             this.hideHelpbt.TabIndex = 24;
-            this.hideHelpbt.Text = "Hide help";
+            this.hideHelpbt.Text = "Sakrij pomoc";
             this.hideHelpbt.UseVisualStyleBackColor = true;
             this.hideHelpbt.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -220,7 +222,7 @@ namespace WindowsFormsApp2
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(290, 95);
             this.button2.TabIndex = 22;
-            this.button2.Text = "Help";
+            this.button2.Text = "Pomoc";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -242,11 +244,22 @@ namespace WindowsFormsApp2
             this.panel4.Size = new System.Drawing.Size(218, 659);
             this.panel4.TabIndex = 21;
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(9, 329);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(205, 103);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "klikom na marker koji \r\nobelezava znamenitost\r\ndolazi do pojave linka\r\nna kom moz" +
+    "emo saznati \r\nnesto vise o istoj\r\n ";
+            // 
             // linkLabel1
             // 
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.linkLabel1.Location = new System.Drawing.Point(3, 441);
+            this.linkLabel1.Location = new System.Drawing.Point(7, 463);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(208, 72);
             this.linkLabel1.TabIndex = 23;
@@ -256,9 +269,9 @@ namespace WindowsFormsApp2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 420);
+            this.label2.Location = new System.Drawing.Point(9, 432);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 21);
             this.label2.TabIndex = 20;
@@ -272,11 +285,11 @@ namespace WindowsFormsApp2
             this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Clear.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clear.ForeColor = System.Drawing.Color.Black;
-            this.Clear.Location = new System.Drawing.Point(10, 243);
+            this.Clear.Location = new System.Drawing.Point(2, 232);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(205, 83);
+            this.Clear.Size = new System.Drawing.Size(212, 83);
             this.Clear.TabIndex = 19;
-            this.Clear.Text = "Clear";
+            this.Clear.Text = "Ponisti";
             this.Clear.UseVisualStyleBackColor = false;
             this.Clear.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -287,17 +300,6 @@ namespace WindowsFormsApp2
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(10, 659);
             this.panel5.TabIndex = 19;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(9, 329);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(205, 91);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "klikom na marker koji \r\nobelezava znamenitost\r\ndolazi do pojave linka\r\nna kom moz" +
-    "emo saznati \r\nnesto vise o istoj\r\n ";
             // 
             // help1
             // 
