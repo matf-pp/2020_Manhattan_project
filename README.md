@@ -22,6 +22,8 @@ Zatim se pojavljuje dugme "Put" i klikom na to dugme iscrtava se optimalna putan
 
 i ispisuje se vreme putovanja (cena taksija) od početne do krajnje tačke.
 
+Korisnik sad može da menja način putovanja, za već izabrana dva čvora.
+
 Na datoj putanji označeni su markeri sa znamenitostima koje predstavljaju.
 
 Klikom na znamenitost pojaviće se link preko kojeg se može saznati nešto više o njoj.
